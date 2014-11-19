@@ -10,7 +10,6 @@
     {% for comment in comments %}
         <blockquote>
             <p>{{ comment.text }}</p>
-            <small>{{ comment.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</small>
         </blockquote>
     {% endfor %}
 {% endblock %}
