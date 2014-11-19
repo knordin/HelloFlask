@@ -1,0 +1,9 @@
+
+
+--CREATE TABLE JSON_PROFILE
+     -- (doc varchar2(300) 
+     --  CONSTRAINT ensure_json CHECK (doc IS JSON));
+
+CREATE TABLE JSON_PROFILE (
+  DOC CLOB CHECK (DOC IS JSON)
+);
