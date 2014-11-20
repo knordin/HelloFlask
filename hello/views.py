@@ -8,12 +8,12 @@ import datetime
 def index():
    # request.values is where the json for you to access
    # print dir(request)
-   # print request.values 
+    print request.values 
 
     form = CommentForm()
     if form.validate_on_submit():
         comment = Profile(
-            form.text.data
+            request.values
         )
         db.session.add(comment)
         db.session.commit()
