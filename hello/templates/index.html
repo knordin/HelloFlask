@@ -3,13 +3,41 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!--
     <form method="post">
         {{ form.hidden_tag() }}
+	define method associated with a click on the button
         {{ render_field(form.text, label=False, class="input-xlarge", autofocus="autofocus") }}
     </form>
+-->
+
+
+    <form>
+	Name: <input id="profname" type= "text" name="name"><br>
+	Email: <input id="email" type="text" name="email"><br>
+	Location: <input id ="proflocation" type="text" name="location"><br>
+	<button id="mybutton" class="btn" type="button">Add Profile</button>
+    </form>
+
     {% for comment in comments %}
         <blockquote>
             <p>{{ comment.text }}</p>
         </blockquote>
     {% endfor %}
+
+
+<script type='text/javascript'>
+
+var extractjson = function(){ 
+	var s = {}
+	s["profname"] = $(profname)[0].value
+        s["email"] = $(email)[0].value
+        s["proflocation"] = $(proflocation)[0].value
+	var jsondoc = JSON.stringify(s)
+	$.post( "/", jsondoc );
+}
+
+$(mybutton).click(extractjson)
+</script>
+
 {% endblock %}
