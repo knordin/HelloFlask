@@ -26,7 +26,8 @@ var extractjson = function(){
         s["email"] = $(email)[0].value
         s["proflocation"] = $(proflocation)[0].value
 	var jsondoc = JSON.stringify(s)
-	$.post("/", jsondoc, function(){location.reload()})
+	$.post("/", jsondoc, function(){location.reload(), 
+					$(profname)[0].value = "", $(email)[0].value = "", $(proflocation)[0].value = ""})
 }
 
 $(mybutton).click(extractjson)
