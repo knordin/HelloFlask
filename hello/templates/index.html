@@ -5,9 +5,37 @@
 {% block content %}
 
     <form>
+	<h3>Personal Information</h3>
 	Name: <input id="profname" type= "text" name="name"><br>
+	Picture: <br>
+	About Me:  <input id="about" type="text" name="about"><br>
+	Age: <input id="age" type="text" name="age" align="right"><br>
 	Email: <input id="email" type="text" name="email"><br>
-	Location: <input id ="proflocation" type="text" name="location"><br>
+	Phone Number: <input id="phone" type="text" name="phone"><br>
+
+        <h3>Oracle Information</h3>
+        Location: <input id ="proflocation" type="text" name="location"><br>
+	Group: <input id="group" type="text" name="group"><br>
+	Employee ID: <input id="empid" type="text" name="empid"><br>
+
+	<h3>Education Information</h3>
+	School: <input id="school" type="text" name="school"><br>
+	Graduation Year:  <input id="gradYear" type="text" name="gradYear"><br>
+	Involvement: <input id="involv" type="text" name="involv"><br>
+
+	<h3>Interests</h3>
+	Interests: 
+	<br>
+	<input type="radio" name="interests" value="Nightlife">Nightlife
+	<br>
+	<input type="radio" name="interests" value="exploringSF">ExploringSF
+	<br>
+	<input type="radio" name="interests" value="outdoors">Outdoors
+	<br>
+	<input type="radio" name="interests" value="Sports">Sports
+	<br>
+	<input type="radio" name="interests" value="VideoGames">VideoGames
+
 	<button id="mybutton" class="btn" type="button">Add Profile</button>
     </form>
 
