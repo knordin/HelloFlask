@@ -4,27 +4,34 @@
 
 {% block content %}
 
-    <form>
-	<h3>Personal Information</h3>
-	Name: <input id="profname" type= "text" name="name"><br>
-	Picture: <br>
-	About Me:  <input id="about" type="text" name="about"><br>
-	Age: <input id="age" type="text" name="age" align="right"><br>
-	Email: <input id="email" type="text" name="email"><br>
-	Phone Number: <input id="phone" type="text" name="phone"><br>
+    <form>	
+	<fieldset>
+	<legend>Personal Information</legend>
+	<label>Name:</label> <input id="profname" type= "text" name="name"><br>
+	<label>Picture:</label> <br>
+	<label>About Me:</label> <input id="about" type="text" name="about"><br>
+	<label>Age:</label> <input id="age" type="text" name="age"><br>
+	<label>Email:</label> <input id="email" type="text" name="email"><br>
+	<label>Phone Number:</label> <input id="phone" type="text" name="phone"><br>
+	</fieldset>
 
-        <h3>Oracle Information</h3>
-        Location: <input id ="proflocation" type="text" name="location"><br>
-	Group: <input id="group" type="text" name="group"><br>
-	Employee ID: <input id="empid" type="text" name="empid"><br>
+	<fieldset>
+        <legend>Oracle Information</legend>
+        <label>Location:</label> <input id ="proflocation" type="text" name="location"><br>
+	<label>Group:</label> <input id="group" type="text" name="group"><br>
+	<label>Employee ID:</label> <input id="empid" type="text" name="empid"><br>
+	</fieldset>
+	
+	<fieldset>
+	<legend>Education Information</legend>
+	<label>School:</label> <input id="school" type="text" name="school"><br>
+	<label>Graduation Year:</label>  <input id="gradYear" type="text" name="gradYear"><br>
+	<label>Involvement:</label> <input id="involv" type="text" name="involv"><br>
+	</fieldset>
 
-	<h3>Education Information</h3>
-	School: <input id="school" type="text" name="school"><br>
-	Graduation Year:  <input id="gradYear" type="text" name="gradYear"><br>
-	Involvement: <input id="involv" type="text" name="involv"><br>
-
-	<h3>Interests</h3>
-	Interests: 
+	<fieldset>
+	<legend>Interests</legend>
+	<label>Interests: 
 	<br>
 	<input type="radio" name="interests" value="Nightlife">Nightlife
 	<br>
@@ -35,16 +42,12 @@
 	<input type="radio" name="interests" value="Sports">Sports
 	<br>
 	<input type="radio" name="interests" value="VideoGames">VideoGames
+	<br>
+	</fieldset>
+	<br>
 
 	<button id="mybutton" class="btn" type="button">Add Profile</button>
     </form>
-
-    {% for comment in comments %}
-        <blockquote>
-            <p>{{ comment.text }}</p>
-        </blockquote>
-    {% endfor %}
-
 
 <script type='text/javascript'>
 
@@ -53,9 +56,25 @@ var extractjson = function(){
 	s["profname"] = $(profname)[0].value
         s["email"] = $(email)[0].value
         s["proflocation"] = $(proflocation)[0].value
+	s["about"]=$(about)[0].value
+	s["age"]=$(age)[0].value
+	s["phone"]=$(phone)[0].value
+	s["group"]=$(group)[0].value
+	s["empid"]=$(empid)[0].value
+	s["school"]=$(school)[0].value
+	s["gradYear"]=$(gradYear)[0].value
 	var jsondoc = JSON.stringify(s)
 	$.post("/", jsondoc, function(){location.reload(), 
-					$(profname)[0].value = "", $(email)[0].value = "", $(proflocation)[0].value = ""})
+					$(profname)[0].value = "", 
+					$(email)[0].value = "", 
+					$(proflocation)[0].value = ""
+					$(about)[0].value = "",
+					$(age)[0].value = "",
+					$(phone)[0].value = "",
+					$(group)[0].value = "",
+					$(empid)[0].value = "",
+					$(school)[0].value = "",
+					$(gradYear)[0].value = ""})
 }
 
 $(mybutton).click(extractjson)
