@@ -4,50 +4,98 @@
 
 {% block content %}
 
-    <form>	
-	<fieldset>
-	<legend>Personal Information</legend>
-	<label>Name:</label> <input id="profname" type= "text" name="name"><br>
-	<label>Picture:</label> <br>
-	<label>About Me:</label> <input id="about" type="text" name="about"><br>
-	<label>Age:</label> <input id="age" type="text" name="age"><br>
-	<label>Email:</label> <input id="email" type="text" name="email"><br>
-	<label>Phone Number:</label> <input id="phone" type="text" name="phone"><br>
+<div id="form">
+    <form name="my_profile">
+        <fieldset>
+	    <legend>Personal Information</legend>
+            <div class="form-group">
+                <label>Name:</label>
+		<input name="name" id="prof_name" name="name"/>
+            </div>
+	    <br>
+	    <div class="form-group">
+                <label>Picture:</label>
+		<input name="picture" id="picture" name="picture"/>
+            </div>
+	    <br>
+	    <div class="form-group">
+		<label>About Me:</label>
+		<input id="about" name="about"/>
+	    </div>
+	    <br>
+	    <div class="form-group">
+		<label>Age:</label>
+		<input id="age" name="age"/>
+	    </div>
+	    <br>
+	    <div class="form-group">
+		<label>Email:</label>
+		<input id="email" name="email"/>
+	    </div>
+	    <br>
+	    <div class="form-group">
+		<label>Phone Number:</label>
+		<input id="phone" name="phone"/>
+	    </div>
 	</fieldset>
+	<br>
+	<fieldset>
+	    <legend>Oracle Information</legend>
+	    <div class="form-group">
+		<label>Location:</label>
+		<input id="location" name="location"/>
+	    </div>
+	    <br>
+	    <div class="form-group">
+		<label>Group:</label>
+		<input id="group" name="group"/>
+	    </div>
+	    <br>
+	    <div class="form-group">
+		<label>Employee ID:</label>
+		<input id="empid" name="empid"/>
+	    </div>
+	</fieldset>
+	<br>
+	<fieldset>
+	    <legend>Education Information</legend>
+	    <div class="form-group">
+		<label>School:</label>
+		<input id="school" name="school"/>
+	    </div>
+	    <br>
+	    <div class="form-group">
+		<label>Graduation Year:</label>
+		<input id="gradYear" name="gradYear"/>
+	    </div>
+	    <br>
+	    <div class="form-group">
+		<label>Involvement:</label>
+		<input id="involv" name="involv"/>
+	    </div>
+        </fieldset>
+	<br>
+	<fieldset>
+	    <input name="regbutton" type="button" class="button" value="Update My Profile" id="mybutton"/>
+	</fieldset>
+    </form>
+</div>
 
-	<fieldset>
-        <legend>Oracle Information</legend>
-        <label>Location:</label> <input id ="proflocation" type="text" name="location"><br>
-	<label>Group:</label> <input id="group" type="text" name="group"><br>
-	<label>Employee ID:</label> <input id="empid" type="text" name="empid"><br>
-	</fieldset>
-	
-	<fieldset>
-	<legend>Education Information</legend>
-	<label>School:</label> <input id="school" type="text" name="school"><br>
-	<label>Graduation Year:</label>  <input id="gradYear" type="text" name="gradYear"><br>
-	<label>Involvement:</label> <input id="involv" type="text" name="involv"><br>
-	</fieldset>
-
+<!--
+<form>
 	<fieldset>
 	<legend>Interests</legend>
 	<label>Interests: 
 	<br>
 	<input type="radio" name="interests" value="Nightlife">Nightlife
-	<br>
 	<input type="radio" name="interests" value="exploringSF">ExploringSF
-	<br>
 	<input type="radio" name="interests" value="outdoors">Outdoors
-	<br>
 	<input type="radio" name="interests" value="Sports">Sports
-	<br>
 	<input type="radio" name="interests" value="VideoGames">VideoGames
-	<br>
 	</fieldset>
-	<br>
-
 	<button id="mybutton" class="btn" type="button">Add Profile</button>
     </form>
+-->
 
 <script type='text/javascript'>
 

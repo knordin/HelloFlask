@@ -2,8 +2,11 @@ body {
     padding-top: 60px;
 }
 
+div {
+    background-color: #b0c4de;
+}
 form {
-    background-color: #FFF;
+    background-color: #b0c4de;
     height: 600px;
     width: 600px;
     margin-right: auto;
@@ -14,6 +17,7 @@ form {
     padding: 0px;
     text-align:center;
 }
+
 label {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 18px;
@@ -26,10 +30,10 @@ label {
     margin-right:15px;
     float:left;
 }
+
 input {
     height: 20px;
     width: 300px;
     border: 1px solid #000;
     margin-top: 10px;
 }
-
