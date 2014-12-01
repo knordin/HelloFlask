@@ -23,9 +23,10 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                    </a>
                     <a class="brand" href="{{ url_for('index') }}">Demo</a>
                     <div class="nav-collapse">
+			<ul class="nav">
+			    {{ nav_link('Login', 'login') }}
                         <ul class="nav">
                             {{ nav_link('My Profile', 'index') }}
                         </ul>
