@@ -2,12 +2,9 @@ body {
     padding-top: 60px;
 }
 
-div {
-    background-color: #b0c4de;
-}
 form {
-    background-color: #b0c4de;
-    height: 600px;
+    background-color: #FFFFFF;
+    height: 1000px;
     width: 600px;
     margin-right: auto;
     margin-left: auto;
@@ -32,6 +29,13 @@ label {
 }
 
 input {
+    height: 20px;
+    width: 300px;
+    border: 1px solid #000;
+    margin-top: 10px;
+}
+
+button {
     height: 20px;
     width: 300px;
     border: 1px solid #000;
