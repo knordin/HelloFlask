@@ -81,7 +81,7 @@
         </fieldset>
 	<br>
 	<fieldset>
-	    <button type="button" class="button" id="mybutton">Update My Profile</button>
+	    <button type="button" class="btn" id="mybutton">Update My Profile</button>
 	</fieldset>
     </form>
 </div>
