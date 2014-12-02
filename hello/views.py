@@ -18,8 +18,8 @@ def index():
     comments = Profile.query.order_by(db.desc(Profile.comment_id))
     return render_template('index.html', comments=comments)
 
-@app.route('/viewprof/<username>', methods=['GET'])
-def viewprof(username):
+@app.route('/viewprof', methods=['GET'])
+def viewprof():
     comments = Profile.query.order_by(db.desc(Profile.comment_id))
     contents = comments.first().text
 
