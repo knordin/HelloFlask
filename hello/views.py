@@ -3,7 +3,9 @@ from forms import CommentForm, LoginForm
 from hello import app, db, login_manager
 from models import Profile
 from flask.ext.login import LoginManager, UserMixin, login_required
+from sqlalchemy.sql import text
 import datetime
+import json
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -17,10 +19,13 @@ def index():
     comments = Profile.query.order_by(db.desc(Profile.comment_id))
     return render_template('index.html', comments=comments)
 
-@app.route('/viewprof', methods=['GET'])
-def viewprof():
+@app.route('/viewprof/<username>', methods=['GET'])
+def viewprof(username):
     comments = Profile.query.order_by(db.desc(Profile.comment_id))
-    return render_template('viewprof.html', comments=comments)
+    contents = comments.first().text
+
+    data = json.loads(contents)
+    return render_template('viewprof.html', comments=data)
 
 @app.route('/search', methods=['GET'])
 def search():

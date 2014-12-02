@@ -3,10 +3,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% for comment in comments %}
-            <p>{{ comment.text.split('"') }}</p>
-    {% endfor %}
-
 
 <div id="form">
     <form name="my_profile">
@@ -14,30 +10,41 @@
 	    <legend>Personal Information</legend>
             <div class="form-group">
                 <label>Name:</label>
+		<label2>{{ comments["profname"] }}</label2>
             </div>
 	    <br><br>
 	    <div class="form-group">
                 <label>Picture:</label>
+		<label2>{{ comments["picture"] }}</label2>
             </div>
             <br><br>
 	    <div class="form-group">
 		<label>About Me:</label>
+		<label2>{{ comments["about"] }}</label2>
 	    </div>
 	    <br><br>
 	    <div class="form-group">
 		<label>Age:</label>
+		<label2>{{ comments["age"] }}</label2>
 	    </div>
 	    <br><br>
 	    <div class="form-group">
 		<label>Email:</label>
+		<label2>{{ comments["email"] }}</label2>
 	    </div>
 	    <br><br>
 	    <div class="form-group">
 		<label>Phone Number:</label>
+		<label2>{{ comments["phone"] }}</label2>
 	    </div>
 	    <br><br>
 	    <div class="form-group">
 		<label>Interests:</label>
+		<label2>{{ comments["inter1"] }}</label2>
+		<label2>{{ comments["inter2"] }}</label2>
+		<label2>{{ comments["inter3"] }}</label2>
+		<label2>{{ comments["inter4"] }}</label2>
+		<label2>{{ comments["inter5"] }}</label2>
 	    </div>
 	</fieldset>
 	<br>
@@ -45,14 +52,17 @@
 	    <legend>Oracle Information</legend>
 	    <div class="form-group">
 		<label>Location:</label>
+		<label2>{{ comments["loc"] }}</label2>
 	    </div>
 	    <br><br>
 	    <div class="form-group">
 		<label>Group:</label>
+		<label2>{{ comments["group"] }}</label2>
 	    </div>
 	    <br><br>
 	    <div class="form-group">
 		<label>Employee ID:</label>
+		<label2>{{ comments["empid"] }}</label2>
 	    </div>
 	</fieldset>
 	<br>
@@ -60,14 +70,17 @@
 	    <legend>Education Information</legend>
 	    <div class="form-group">
 		<label>School:</label>
+		<label2>{{ comments["school"] }}</label2>
 	    </div>
 	    <br><br>
 	    <div class="form-group">
 		<label>Graduation Year:</label>
+		<label2>{{ comments["gradYear"] }}</label2>
 	    </div>
 	    <br><br>
 	    <div class="form-group">
 		<label>Involvement:</label>
+		<label2>{{ comments["involv"] }}</label2>
 	    </div>
         </fieldset>
 	<br>

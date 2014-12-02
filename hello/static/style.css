@@ -5,7 +5,7 @@ body {
 form {
     background-color: #FFFFFF;
     height: 1000px;
-    width: 600px;
+    width: 700px;
     margin-right: auto;
     margin-left: auto;
     margin-top: 0px;
@@ -28,6 +28,20 @@ label {
     float:left;
 }
 
+label2 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 18px;
+    color: #333;
+    height: 20px;
+    width: 200px;
+    margin-top: 10px;
+    margin-left: 60px;
+    text-align: left;
+    margin-right:15px;
+    float:left;
+}
+
+
 input {
     height: 20px;
     width: 300px;
@@ -37,7 +51,7 @@ input {
 
 button {
     height: 20px;
-    width: 200px;
+    width: 50px;
     border: 1px solid #000;
     margin-top: 10px;
 }
