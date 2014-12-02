@@ -4,9 +4,7 @@
 
 {% block content %}
     {% for comment in comments %}
-        <blockquote>
-            <p>{{ comment.text }}</p>
-        </blockquote>
+            <p>{{ comment.text.split('"') }}</p>
     {% endfor %}
 
 
