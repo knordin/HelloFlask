@@ -1,9 +1,12 @@
 from flask.ext.wtf import Form
-from wtforms import TextField, validators
+from wtforms import TextField, validators, PasswordField
 
 class CommentForm(Form):
     text = TextField('Comment', [validators.Required()])
 
 class LoginForm(Form):
-    text = TextField('Comment', [validators.Required()])
+    username = TextField("username")
+    password = PasswordField("password")
+
+
 

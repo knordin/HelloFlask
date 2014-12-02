@@ -4,8 +4,19 @@
 
 {% block content %}
 
-<p>"HELLO, LOGIN PAGE!"</p>
+<div>
+<form method="POST"> 
 
+
+{{ form.hidden_tag()}}
+{{ render_field(form.username, label=True, class="input-xlarge") }}
+{{ render_field(form.password, label=True, class="input-xlarge") }} 
+
+<input type="submit" value="Submit" class="btn">
+<input type="submit" value="Create Login" class="btn">
+
+</form>
+</div>
 
 
 {% endblock %}
