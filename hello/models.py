@@ -7,8 +7,11 @@ class Profile(db.Model):
     def __init__(self, text):
         self.text = text
 
-class User(UserMixin):
-    user_database = {"JohnDoe": ("JohnDoe", "John"), "JaneDoe": ("JaneDoes", "Jane")}
+class User(db.Model):
+    user_id = db.Column(db.Integer, db.Sequence('user_id_seq'), primary_key=True)
+    username = db.Column(db.String(50), nullable=False)
+    password = db.Column(db.String(50), nullable=False)
+
     
     def __init__(self, username, password):
 	self.id = username
@@ -16,4 +19,6 @@ class User(UserMixin):
    
     @classmethod
     def get(cls, id):
-	return cls.user_database.get(id)
+        return User.query.filter_by(username=id).first()
+
+
