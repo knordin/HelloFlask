@@ -41,11 +41,11 @@
 	    <div class="form-group">
 		<label>Interests:</label>
 		<container>
-		<input id="inter1" name="inter" type="checkbox" value="expSF">exploring SF<br>
-		<input id="inter2" name="inter" type="checkbox" value="nightlife">nightlife<br>
-		<input id="inter3" name="inter" type="checkbox" value="outdoors">outdoors<br>
-		<input id="inter4" name="inter" type="checkbox" value="sports">sports<br>
-		<input id="inter5" name="inter" type="checkbox" value="videogames">video games<br>
+		<input id="inter1" name="inter" type="checkbox" value="expSF">exploring SF</input><br>
+		<input id="inter2" name="inter" type="checkbox" value="nightlife">nightlife</input><br>
+		<input id="inter3" name="inter" type="checkbox" value="outdoors">outdoors</input><br>
+		<input id="inter4" name="inter" type="checkbox" value="sports">sports</input><br>
+		<input id="inter5" name="inter" type="checkbox" value="videogames">video games</input><br>
 		</container>
 	    </div>
 	</fieldset>
@@ -54,7 +54,7 @@
 	    <legend>Oracle Information</legend>
 	    <div class="form-group">
 		<label>Location:</label>
-		<input id="location" name="location"/>
+		<input id="loc" name="loc"/>
 	    </div>
 	    <br>
 	    <div class="form-group">
@@ -107,7 +107,7 @@ var extractjson = function(){
 	s["inter3"]=$(inter3)[0].checked
 	s["inter4"]=$(inter4)[0].checked
 	s["inter5"]=$(inter5)[0].checked
-	s["location"]=$(location)[0].value
+	s["loc"]=$(loc)[0].value
 	s["group"]=$(group)[0].value
 	s["empid"]=$(empid)[0].value
 	s["school"]=$(school)[0].value
@@ -126,7 +126,7 @@ var extractjson = function(){
 					$(inter3)[0].checked = false,
 					$(inter4)[0].checked = false,
 					$(inter5)[0].checked = false,
-					$(location)[0].value = "",
+					$(loc)[0].value = "",
 					$(group)[0].value = "",
 					$(empid)[0].value = "",
 					$(school)[0].value = "",

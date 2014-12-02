@@ -17,6 +17,15 @@ def index():
     comments = Profile.query.order_by(db.desc(Profile.comment_id))
     return render_template('index.html', comments=comments)
 
+@app.route('/viewprof', methods=['GET'])
+def viewprof():
+    comments = Profile.query.order_by(db.desc(Profile.comment_id))
+    return render_template('viewprof.html', comments=comments)
+
+@app.route('/search', methods=['GET'])
+def search():
+    return render_template('search.html')
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
