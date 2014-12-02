@@ -4,5 +4,6 @@ from wtforms import TextField, validators
 class CommentForm(Form):
     text = TextField('Comment', [validators.Required()])
 
-#class LoginForm(Form):
+class LoginForm(Form):
+    text = TextField('Comment', [validators.Required()])
 

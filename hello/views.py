@@ -1,5 +1,5 @@
 from flask import render_template, url_for, redirect, request
-from forms import CommentForm
+from forms import CommentForm, LoginForm
 from hello import app, db, login_manager
 from models import Profile
 from flask.ext.login import LoginManager, UserMixin, login_required
