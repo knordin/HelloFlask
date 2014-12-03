@@ -1,6 +1,7 @@
 from hello import db
 from flask.ext.login import LoginManager, UserMixin, login_required
 
+
 class Profile(db.Model):
     comment_id = db.Column(db.Integer, db.Sequence('id_seq'), primary_key=True)
     text = db.Column(db.Text, nullable=False)
