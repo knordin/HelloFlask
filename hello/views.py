@@ -2,20 +2,19 @@ from flask import render_template, url_for, redirect, request, flash
 from forms import CommentForm, LoginForm
 from hello import app, db, login_manager
 from models import UserProfile, User
-from flask.ext.login import LoginManager, UserMixin, login_required, login_user
+from flask.ext.login import LoginManager, UserMixin, login_required, login_user, current_user
 from sqlalchemy.sql import text
 import datetime
 import json
 import unicodedata
 
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
-   # request.values is where the json for you to access
+    #request.values is where the json for you to access
     data = request.values.keys()
     #print loginuser.user_id
     #profile_link = "/viewprof/{0}".format(User.user_id)
-  
+    print current_user
     #print profile_link
     if len(data)>0:
 	print data[0]
@@ -71,13 +70,6 @@ def load_user(request):
 	else:
 		return None
 
-
-# @app.route('/upload/', methods=['GET', 'POST'])
-# def upload():
-# 	form = PhotoForm()
-# 	if form.validate_on_submit():
-# 		filename = secure_filename(form.photo.data.filename)
-# 		form.photo.data.save('uploads/' + filename)
 
 
 
