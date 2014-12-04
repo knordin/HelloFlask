@@ -72,6 +72,13 @@ def load_user(request):
 		return None
 
 
+# @app.route('/upload/', methods=['GET', 'POST'])
+# def upload():
+# 	form = PhotoForm()
+# 	if form.validate_on_submit():
+# 		filename = secure_filename(form.photo.data.filename)
+# 		form.photo.data.save('uploads/' + filename)
+
 
 
 	

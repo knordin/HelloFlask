@@ -2,6 +2,7 @@ from hello import db
 from flask.ext.login import LoginManager, UserMixin, login_required
 from sqlalchemy import CheckConstraint
 
+
 class UserProfile(db.Model):
     comment_id = db.Column(db.Integer, db.Sequence('id_seq'), primary_key=True)
     doc = db.Column(db.Text, nullable=True)
