@@ -25,8 +25,8 @@ def index():
     comments = UserProfile.query.order_by(db.desc(UserProfile.comment_id))
     return render_template('index.html', comments=comments)
 
-@app.route('/viewprof', methods=['GET'])
-def viewprof():
+@app.route('/viewprof/<username>', methods=['GET'])
+def viewprof(username):
     #print username.__class__
     #strusr = unicodedata.normalize('NFKD', username).encode('ascii','ignore')
     #print strusr.__class__
