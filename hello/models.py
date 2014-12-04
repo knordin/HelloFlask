@@ -1,11 +1,13 @@
 from hello import db
 from flask.ext.login import LoginManager, UserMixin, login_required
+from sqlalchemy import CheckConstraint
 
-class Profile(db.Model):
+class UserProfile(db.Model):
     comment_id = db.Column(db.Integer, db.Sequence('id_seq'), primary_key=True)
-    text = db.Column(db.Text, nullable=False)
+    doc = db.Column(db.Text, nullable=True)
+    __table_args__ =(CheckConstraint('DOC IS JSON', name='ensure_json'), {})
     def __init__(self, text):
-        self.text = text
+        self.doc = text
 
 class User(db.Model):
     user_id = db.Column(db.Integer, db.Sequence('user_id_seq'), primary_key=True)
