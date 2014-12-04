@@ -17,11 +17,28 @@ class User(db.Model):
 
     
     def __init__(self, username, password):
-	self.id = username
-	self.password = password
-   
+        self.user_id = user_id
+        self.username = username
+        self.password = password
+
+    def is_authenticated(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def is_active(self):
+        return True
+
+    def get_id(self):
+        return self.user_id
+
     @classmethod
     def get(cls, id):
-        return User.query.filter_by(username=id).first()
+        return User.query.filter_by(user_id=id).first()
+
+    @classmethod
+    def get_by_username(cls, username):
+        return User.query.filter_by(username=username).first()
 
 
