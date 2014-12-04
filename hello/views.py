@@ -12,6 +12,7 @@ import unicodedata
 def index():
     #request.values is where the json for you to access
     data = request.values.keys()
+    print "Hello current user", current_user
     #print loginuser.user_id
     #profile_link = "/viewprof/{0}".format(User.user_id)
     print current_user
@@ -27,14 +28,14 @@ def index():
 @app.route('/viewprof', methods=['GET'])
 def viewprof():
     #print username.__class__
-    strusr = unicodedata.normalize('NFKD', username).encode('ascii','ignore')
+    #strusr = unicodedata.normalize('NFKD', username).encode('ascii','ignore')
     #print strusr.__class__
     s = text(
 	"SELECT p.doc "
 	    "FROM user_profile p "
 	    "WHERE p.doc.Profname = :x " 
     )
-    results = db.engine.execute("""SELECT p.doc FROM user_profile p WHERE p.doc.Profname = :x""", x=strusr).first().items()[0][1]
+    results = db.engine.execute("""SELECT p.doc FROM user_profile p WHERE p.doc.Profname = :x""", x=current_user.username).first().items()[0][1]
     print results
     data = json.loads(results)
     print data
@@ -50,25 +51,21 @@ def search():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-	user = load_user(request)
-	if user is not None:
-		flash("Logged in successfully.")
-		return redirect(request.args.get("next") or url_for('index'))
-	else: 
-		flash("Incorrect Username/Password Combination")
+    	username = request.form['username']
+    	password = request.form['password']
+    	user = User.get_by_username(username)
+    	if user is not None:
+    		if user.password == password:
+    			login_user(user)
+    			flash("Logged in successfully.")
+    			return redirect(request.args.get("next") or url_for('index'))
+    	else: 
+    		flash("Incorrect Username/Password Combination")
     return render_template('login.html', form=form)
 
 @login_manager.user_loader
-def load_user(request):
-	username = request.form['username']
-	password = request.form['password']
-
-	user = User.get(username)
-	if user is not None:
-		if user.password == password:
-			return user
-	else:
-		return None
+def load_user(user_id):
+	return User.get(int(user_id))
 
 
 
