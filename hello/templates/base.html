@@ -32,7 +32,10 @@
                             {{ nav_link('Edit My Profile', 'index') }}
                         </ul>
 			<ul class="nav">
-                            {{ nav_link('My Profile', 'viewprof') }}
+                    {% if current_user.is_anonymous() == False %}
+                        {{ nav_link('My Profile', 'viewprof', username=current_user.username) }}
+                    {% endif %}
+
                         </ul>
 			<ul class="nav">
 			    {{ nav_link('Search', 'search') }}

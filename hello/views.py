@@ -11,37 +11,22 @@ import ast
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    #request.values is where the json for you to access
     data = request.values.keys()
-    print "Hello current user", current_user
-    #print loginuser.user_id
-    #profile_link = "/viewprof/{0}".format(User.user_id)
-    print current_user
-    #print profile_link
     if len(data)>0:
 	print data[0]
     	db.session.add(UserProfile(data[0]))
 	db.session.commit()
     	return redirect(url_for('index'))
     comments = UserProfile.query.order_by(db.desc(UserProfile.comment_id))
-    return render_template('index.html', comments=comments)
+    return render_template('index.html', comments=comments, current_user=current_user)
 
-@app.route('/viewprof', methods=['GET'])
-def viewprof():
-    #print username.__class__
-    #strusr = unicodedata.normalize('NFKD', username).encode('ascii','ignore')
-    #print strusr.__class__
-    s = text(
-	"SELECT p.doc "
-	    "FROM user_profile p "
-	    "WHERE p.doc.Profname = :x " 
-    )
-    results = db.engine.execute("""SELECT p.doc FROM user_profile p WHERE p.doc.Profname = :x""", x=current_user.username).first().items()[0][1]
-    data = json.loads(results)
-    print data
-    return "hello"
-    #return render_template('viewprof.html', comments=data) 
-
+@app.route('/viewprof/<username>', methods=['GET'])
+def viewprof(username):
+	print current_user.username
+	results = db.engine.execute("""SELECT p.doc FROM user_profile p WHERE p.doc.username = :x""", x=current_user.username).first().items()[0][1]
+	print results
+	data = json.loads(results)
+ 	return render_template('viewprof/<username>', comments=data) 
 
 @app.route("/search")
 def search():

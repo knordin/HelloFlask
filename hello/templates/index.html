@@ -69,7 +69,7 @@
 	</fieldset>
 	<br>
 	<fieldset>
-	    <legend>Education Information</legend>
+		<legend>Education Information</legend>
 	    <div class="form-group">
 		<label>School:</label>
 		<input id="school" name="school"/>
@@ -94,9 +94,11 @@
 
 <script type='text/javascript'>
 
+	
 var extractjson = function(){ 
 	var s = {}
 	s["pname"] = $(prof_name)[0].value
+	s["username"] = "{{current_user.username}}"
         s["picture"] = $(picture)[0].value
 	s["about"]=$(about)[0].value
 	s["age"]=$(age)[0].value
