@@ -5,27 +5,32 @@
 {% block content %}
 
 <div id="form">
-    <form name="my_profile">
+    <form name="my_profile" method ="POST">
         <fieldset>
 	    <legend>Personal Information</legend>
             <div class="form-group">
                 <label>Name:</label>
-		<input name="name" id="prof_name"/>
+		<input name="pname" id="prof_name" type="text"/>
             </div>
 	    <br>
 	    <div class="form-group">
+		<label>About Me:</label>
+		<input id="about" name="about" type="text"/>
+	    </div>
+	    <br>
+	    <div class="form-group">
 		<label>Age:</label>
-		<input id="age" name="age"/>
+		<input id="age" name="age" type="text"/>
 	    </div>
 	    <br>
 	    <div class="form-group">
 		<label>Email:</label>
-		<input id="email" name="email"/>
+		<input id="email" name="email" type="text"/>
 	    </div>
 	    <br>
 	    <div class="form-group">
 		<label>Phone Number:</label>
-		<input id="phone" name="phone"/>
+		<input id="phone" name="phone" type="text"/>
 	    </div>
 	    <br>
 	    <div class="form-group">
@@ -44,17 +49,17 @@
 	    <legend>Oracle Information</legend>
 	    <div class="form-group">
 		<label>Location:</label>
-		<input id="loc" name="loc"/>
+		<input id="loc" name="loc" type="text"/>
 	    </div>
 	    <br>
 	    <div class="form-group">
 		<label>Group:</label>
-		<input id="group" name="group"/>
+		<input id="group" name="group" type="text"/>
 	    </div>
 	    <br>
 	    <div class="form-group">
 		<label>Employee ID:</label>
-		<input id="empid" name="empid"/>
+		<input id="empid" name="empid" type="text"/>
 	    </div>
 	</fieldset>
 	<br>
@@ -62,25 +67,23 @@
 	    <legend>Education Information</legend>
 	    <div class="form-group">
 		<label>School:</label>
-		<input id="school" name="school"/>
+		<input id="school" name="school" type="text"/>
 	    </div>
 	    <br>
 	    <div class="form-group">
 		<label>Graduation Year:</label>
-		<input id="gradYear" name="gradYear"/>
+		<input id="gradYear" name="gradYear" type="text"/>
 	    </div>
 	    <br>
 	    <div class="form-group">
 		<label>Involvement:</label>
-		<input id="involv" name="involv"/>
+		<input id="involv" name="involv" type="text"/>
 	    </div>
         </fieldset>
 	<br>
 	<fieldset>
-	    <button type="button" class="button" id="mybutton">Search</button>
+	    <input type="submit" name="search" value="Search">
 	</fieldset>
     </form>
 </div>
-
-
 {% endblock %}

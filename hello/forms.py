@@ -10,6 +10,9 @@ class LoginForm(Form):
     username = TextField("username")
     password = PasswordField("password")
 
+class SearchForm(Form):
+    profname = TextField("profname")
+
 # class PhotoForm(Form):
 # 	photo = FileField('Your Photo')
 

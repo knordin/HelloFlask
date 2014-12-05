@@ -96,17 +96,17 @@
 
 var extractjson = function(){ 
 	var s = {}
-	s["Profname"] = $(prof_name)[0].value
+	s["pname"] = $(prof_name)[0].value
         s["picture"] = $(picture)[0].value
 	s["about"]=$(about)[0].value
 	s["age"]=$(age)[0].value
 	s["email"]=$(email)[0].value
 	s["phone"]=$(phone)[0].value
-	s["inter1"]=$(inter1)[0].checked 
-	s["inter2"]=$(inter2)[0].checked
-	s["inter3"]=$(inter3)[0].checked
-	s["inter4"]=$(inter4)[0].checked
-	s["inter5"]=$(inter5)[0].checked
+	s["inter1"]=$(inter1)[0].checked.toString() 
+	s["inter2"]=$(inter2)[0].checked.toString()
+	s["inter3"]=$(inter3)[0].checked.toString()
+	s["inter4"]=$(inter4)[0].checked.toString()
+	s["inter5"]=$(inter5)[0].checked.toString()
 	s["loc"]=$(loc)[0].value
 	s["group"]=$(group)[0].value
 	s["empid"]=$(empid)[0].value

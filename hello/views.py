@@ -7,6 +7,7 @@ from sqlalchemy.sql import text
 import datetime
 import json
 import unicodedata
+import ast
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -25,8 +26,8 @@ def index():
     comments = UserProfile.query.order_by(db.desc(UserProfile.comment_id))
     return render_template('index.html', comments=comments)
 
-@app.route('/viewprof/<username>', methods=['GET'])
-def viewprof(username):
+@app.route('/viewprof', methods=['GET'])
+def viewprof():
     #print username.__class__
     #strusr = unicodedata.normalize('NFKD', username).encode('ascii','ignore')
     #print strusr.__class__
@@ -36,17 +37,36 @@ def viewprof(username):
 	    "WHERE p.doc.Profname = :x " 
     )
     results = db.engine.execute("""SELECT p.doc FROM user_profile p WHERE p.doc.Profname = :x""", x=current_user.username).first().items()[0][1]
-    print results
     data = json.loads(results)
     print data
     return "hello"
     #return render_template('viewprof.html', comments=data) 
 
 
-@app.route('/search', methods=['GET'])
+@app.route("/search")
 def search():
     return render_template('search.html')
 
+@app.route("/search", methods=['POST'])
+def search_post(): 
+    sql = """SELECT p.doc FROM user_profile p """
+    where_clause = []
+    for i in ['pname','about','age','email','phone','loc','group','empid','school','gradYear','involv']:
+	if request.form[i] != "":
+	    where_clause.append("lower(p.doc." + i + ") like '%" + request.form[i] +"%' ")
+    if len(where_clause) > 0:
+        all_wheres = " AND ".join(where_clause)
+	sql = sql + "WHERE " + all_wheres
+    search_results = db.engine.execute(sql).fetchall()
+    results = []
+    for i in range(len(search_results)):
+        string = '"""'+str(search_results[i][0])+'"""'
+        print string
+        dict_string = ast.literal_eval(string)
+	print dict_string.__class__
+        results.append(dict_string)
+    return render_template('results.html', comments=results)
+ 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
