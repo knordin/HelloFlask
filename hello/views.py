@@ -9,7 +9,7 @@ import json
 import unicodedata
 import ast
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/myprofile', methods=['GET', 'POST'])
 def index():
     data = request.values.keys()
     if len(data)>0:
@@ -22,10 +22,11 @@ def index():
 
 @app.route('/viewprof/<username>', methods=['GET'])
 def viewprof(username):
-	print current_user.username
-	results = db.engine.execute("""SELECT p.doc FROM user_profile p WHERE p.doc.username = :x""", x=current_user.username).first().items()[0][1]
-	print results
+	#print current_user.username
+	results = db.engine.execute("""SELECT p.doc FROM user_profile p WHERE p.doc.username = :x""", x=current_user.username).first()
+	results = '"""'+ results[0]+'"""'
 	data = json.loads(results)
+        print data
  	return render_template('viewprof/<username>', comments=data) 
 
 @app.route("/search")
@@ -45,14 +46,11 @@ def search_post():
     search_results = db.engine.execute(sql).fetchall()
     results = []
     for i in range(len(search_results)):
-        string = '"""'+str(search_results[i][0])+'"""'
-        print string
-        dict_string = ast.literal_eval(string)
-	print dict_string.__class__
+        dict_string = ast.literal_eval(search_results[i][0])
         results.append(dict_string)
     return render_template('results.html', comments=results)
  
-@app.route("/login", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():

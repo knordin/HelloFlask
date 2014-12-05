@@ -1,0 +1,39 @@
+{% from "util.html" import render_field %}
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+    <table class="table" id="myTable">
+	<tr>
+    	    <th>Profile Name</th>
+            <th>Picture</th>		
+    	    <th>Link</th>
+       </tr>
+       <tr>
+    	    <td>{{ comments[0]["pname"] }}</td>
+    	    <td>{{ comments[0]["picture"] }}</td>		
+    	    <td>link here</td>
+       </tr>
+    </table>
+</div>
+{% endblock %}
+
+<script>
+function addRow(oneComment) {
+    var table = document.getElementById("myTable");
+    var row = table.insertRow(0);
+    var pname = row.insertCell(0);
+    var pic = row.insertCell(1);
+    var link = row.insertCell(2);
+    pname.innerHTML = oneComment["pname"];
+    pic.innerHTML = oneComment["picture"];
+    link.innerHTML = "the link here";
+}
+
+function addAllRows(allComments){
+    for (i = 0; i < allComments.length; i++) { 
+    addRow(allComments[i]);
+}}
+</script>
