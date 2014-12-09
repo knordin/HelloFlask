@@ -1,6 +1,6 @@
 from flask import render_template, url_for, redirect, request, flash
 from forms import CommentForm, LoginForm
-from hello import app, db, login_manager
+from hello import app, db, login_manager, db_connection
 from models import UserProfile, User
 from flask.ext.login import LoginManager, UserMixin, login_required, login_user, current_user
 from sqlalchemy.sql import text
@@ -11,23 +11,33 @@ import ast
 
 @app.route('/myprofile', methods=['GET', 'POST'])
 def index():
+    print "current user", current_user.username
     data = request.values.keys()
+    print data
     if len(data)>0:
 	print data[0]
-    	db.session.add(UserProfile(data[0]))
-	db.session.commit()
+        #do we have this profile already?
+        existing = db_connection.execute("""SELECT p.comment_id, p.doc FROM user_profile p where p.doc.Profname = :x""", x=current_user.username).fetchone()[0]
+        print "existing", existing
+        if existing:
+            this_profile = UserProfile.get(existing)
+            this_profile.doc = data[0]
+            db.session.commit()
+        else:
+            db.session.add(UserProfile(data[0]))
+            db.session.commit()
     	return redirect(url_for('index'))
     comments = UserProfile.query.order_by(db.desc(UserProfile.comment_id))
     return render_template('index.html', comments=comments, current_user=current_user)
 
 @app.route('/viewprof/<username>', methods=['GET'])
 def viewprof(username):
-	#print current_user.username
-	results = db.engine.execute("""SELECT p.doc FROM user_profile p WHERE p.doc.username = :x""", x=current_user.username).first()
-	results = '"""'+ results[0]+'"""'
+	print current_user.username
+	results = db_connection.execute("""SELECT p.doc FROM user_profile p WHERE p.doc.Profname = :x""", x=current_user.username)
+	results = results.fetchone()[0]
 	data = json.loads(results)
         print data
- 	return render_template('viewprof/<username>', comments=data) 
+ 	return render_template('viewprof.html', comments=data) 
 
 @app.route("/search")
 def search():
@@ -37,13 +47,15 @@ def search():
 def search_post(): 
     sql = """SELECT p.doc FROM user_profile p """
     where_clause = []
-    for i in ['pname','about','age','email','phone','loc','group','empid','school','gradYear','involv']:
+    for i in ['Profname','about','age','email','phone','loc','group','empid','school','gradYear','involv']:
 	if request.form[i] != "":
 	    where_clause.append("lower(p.doc." + i + ") like '%" + request.form[i] +"%' ")
     if len(where_clause) > 0:
         all_wheres = " AND ".join(where_clause)
 	sql = sql + "WHERE " + all_wheres
-    search_results = db.engine.execute(sql).fetchall()
+    print "SQL!!!!", sql
+    search_results = db_connection.execute(sql).fetchall()
+    print search_results
     results = []
     for i in range(len(search_results)):
         dict_string = ast.literal_eval(search_results[i][0])

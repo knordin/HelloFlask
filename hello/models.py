@@ -4,9 +4,11 @@ from sqlalchemy import CheckConstraint
 
 
 class UserProfile(db.Model):
+    is_anonymous = False
     comment_id = db.Column(db.Integer, db.Sequence('id_seq'), primary_key=True)
     doc = db.Column(db.Text, nullable=True)
     __table_args__ =(CheckConstraint('DOC IS JSON', name='ensure_json'), {})
+
     def __init__(self, text):
         self.doc = text
 
