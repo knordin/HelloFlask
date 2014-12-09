@@ -12,6 +12,11 @@ class UserProfile(db.Model):
     def __init__(self, text):
         self.doc = text
 
+    @classmethod
+    def get(cls, id):
+        return UserProfile.query.filter_by(comment_id=id).first()
+
+
 class User(db.Model):
     user_id = db.Column(db.Integer, db.Sequence('user_id_seq'), primary_key=True)
     username = db.Column(db.String(50), nullable=False)
