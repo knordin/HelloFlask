@@ -33,7 +33,9 @@ def index():
 @app.route('/viewprof/<username>', methods=['GET'])
 def viewprof(username):
 	print current_user.username
-	results = db_connection.execute("""SELECT p.doc FROM user_profile p WHERE p.doc.Profname = :x""", x=current_user.username)
+	print current_user.is_anonymous()
+	print current_user.is_anonymous
+	results = db_connection.execute("""SELECT p.doc FROM user_profile p WHERE p.doc.username = :x""", x=current_user.username)
 	results = results.fetchone()[0]
 	data = json.loads(results)
         print data

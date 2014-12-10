@@ -27,6 +27,7 @@ class User(db.Model):
         self.user_id = user_id
         self.username = username
         self.password = password
+        self.is_anonymous = False
 
     def is_authenticated(self):
         return True
