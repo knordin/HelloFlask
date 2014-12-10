@@ -9,7 +9,7 @@ import json
 import unicodedata
 import ast
 
-@app.route('/myprofile', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     data = request.values.keys()
     if len(data)>0:
@@ -24,7 +24,6 @@ def index():
 def viewprof(username):
 	#print current_user.username
 	results = db.engine.execute("""SELECT p.doc FROM user_profile p WHERE p.doc.username = :x""", x=current_user.username).first()
-	results = '"""'+ results[0]+'"""'
 	data = json.loads(results)
         print data
  	return render_template('viewprof/<username>', comments=data) 
@@ -40,6 +39,10 @@ def search_post():
     for i in ['pname','about','age','email','phone','loc','group','empid','school','gradYear','involv']:
 	if request.form[i] != "":
 	    where_clause.append("lower(p.doc." + i + ") like '%" + request.form[i] +"%' ")
+    if request.form['inter1']!="":
+	    #where_clause.append("lower(p.doc." + i + ") like '%" + request.form['inter1'] +"%' ")
+	    print "help"
+    print "made it here"
     if len(where_clause) > 0:
         all_wheres = " AND ".join(where_clause)
 	sql = sql + "WHERE " + all_wheres
@@ -50,7 +53,7 @@ def search_post():
         results.append(dict_string)
     return render_template('results.html', comments=results)
  
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
