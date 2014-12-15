@@ -17,7 +17,7 @@ def index():
     if len(data)>0:
 	print data[0]
         #do we have this profile already?
-        existing = db_connection.execute("""SELECT p.comment_id, p.doc FROM user_profile p where p.doc.Profname = :x""", x=current_user.username).fetchone()[0]
+        existing = db_connection.execute("""SELECT p.comment_id, p.doc FROM user_profile p where p.doc.username = :x""", x=current_user.username).fetchone()[0]
         print "existing", existing
         if existing:
             this_profile = UserProfile.get(existing)
@@ -26,7 +26,7 @@ def index():
         else:
             db.session.add(UserProfile(data[0]))
             db.session.commit()
-    	return redirect(url_for('index'))
+    	return redirect(url_for('viewprof', username=current_user.username))
     comments = UserProfile.query.order_by(db.desc(UserProfile.comment_id))
     return render_template('index.html', comments=comments, current_user=current_user)
 

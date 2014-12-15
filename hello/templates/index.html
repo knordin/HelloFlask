@@ -116,7 +116,7 @@ var extractjson = function(){
 	s["gradYear"]=$(gradYear)[0].value
 	s["involv"]=$(involv)[0].value
 	var jsondoc = JSON.stringify(s)
-	$.post("/myprofile", jsondoc, function(){location.reload(), 
+	$.post("/", jsondoc, function(){location.reload(), 
 					$(prof_name)[0].value = "", 
 					$(picture)[0].value="",
 					$(about)[0].value = "",
