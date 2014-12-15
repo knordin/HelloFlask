@@ -105,11 +105,11 @@ var extractjson = function(){
 	s["email"]=$(email)[0].value
 	s["phone"]=$(phone)[0].value
 	s["inter"]=[]
-	s["inter"].push($(inter1)[0].value)
-	s["inter"].push($(inter2)[0].value)
-	s["inter"].push($(inter3)[0].value)
-	s["inter"].push($(inter4)[0].value)
-	s["inter"].push($(inter5)[0].value)
+	s["inter"].push($(inter1)[0].checked)
+	s["inter"].push($(inter2)[0].checked)
+	s["inter"].push($(inter3)[0].checked)
+	s["inter"].push($(inter4)[0].checked)
+	s["inter"].push($(inter5)[0].checked)
 	s["loc"]=$(loc)[0].value
 	s["group"]=$(group)[0].value
 	s["empid"]=$(empid)[0].value

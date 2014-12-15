@@ -52,7 +52,9 @@ def search_post():
     for i in ['Profname','about','age','email','phone','loc','group','empid','school','gradYear','involv']:
 	if request.form[i] != "":
 	    where_clause.append("lower(p.doc." + i + ") like '%" + request.form[i] +"%' ")
-    #if request.form['inter1']!="":
+    print len(request.form['inter'])
+    #for i in len(inter)
+    #if request.form['inter1']:
 	    #where_clause.append("lower(p.doc." + i + ") like '%" + request.form['inter1'] +"%' ")
     if len(where_clause) > 0:
         all_wheres = " AND ".join(where_clause)
@@ -62,7 +64,6 @@ def search_post():
     for i in range(len(search_results)):
         dict_string = ast.literal_eval(search_results[i][0])
         results.append(dict_string)
-    print results
     return render_template('results.html', comments=results)
  
 @app.route("/login", methods=['GET', 'POST'])
