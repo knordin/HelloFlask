@@ -40,11 +40,10 @@
 	    <br><br>
 	    <div class="form-group">
 		<label>Interests:</label>
-		<label2>{{ comments["inter1"] }}</label2>
-		<label2>{{ comments["inter2"] }}</label2>
-		<label2>{{ comments["inter3"] }}</label2>
-		<label2>{{ comments["inter4"] }}</label2>
-		<label2>{{ comments["inter5"] }}</label2>
+		{% for i in comments["inter"] %}
+			<label2>{{ i }}</label2>
+		{% endfor %}
+
 	    </div>
 	</fieldset>
 	<br>
