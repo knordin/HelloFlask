@@ -2,21 +2,68 @@
 
 {% extends "base.html" %}
 
+<style>
+@import url(http://fonts.googleapis.com/css?family=Roboto:400);
+body {
+  background-color:#fff;
+  -webkit-font-smoothing: antialiased;
+  font: normal 14px Roboto,arial,sans-serif;
+}
+
+.container {
+    padding: 25px;
+    position: fixed;
+}
+
+.form-login {
+    background-color: #EDEDED;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    box-shadow:0 1px 0 #cfcfcf;
+}
+
+h4 { 
+ border:0 solid #fff; 
+ border-bottom-width:1px;
+ padding-bottom:10px;
+ text-align: center;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.wrapper {
+    text-align: center;
+}
+</style>
+
+
 {% block content %}
 
-<div>
-<form method="POST"> 
+<!--Pulling Awesome Font -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-5 col-md-3">
+            <div class="form-login">
+			<form method="POST"> 
+			<h4>Welcome back!</h4>
+				{{ form.hidden_tag()}}
+				{{ render_field(form.username, label=False, class="input-xlarge", placeholder="username") }}
+				{{ render_field(form.password, label=False, class="input-xlarge", placeholder="password") }} 
 
-{{ form.hidden_tag()}}
-{{ render_field(form.username, label=True, class="input-xlarge") }}
-{{ render_field(form.password, label=True, class="input-xlarge") }} 
-
-<input type="submit" value="Submit" class="btn">
-<input type="submit" value="Create Login" class="btn">
-
-</form>
+			<input type="submit" value="Login" class="btn">
+			</form>
+			</div>
+        </div>
+    </div>
 </div>
-
 
 {% endblock %}
