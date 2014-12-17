@@ -4,91 +4,97 @@
 
 {% block content %}
 
-<div id="form">
+<div id="form" >
     <form name="my_profile">
         <fieldset>
-	    <legend>Personal Information</legend>
-            <div class="form-group">
-                <label>Name:</label>
-		<input name="name" id="prof_name"/>
-            </div>
+		    <legend>Personal Information</legend>
+	            <div class="form-group">
+	                <label>Name:</label>
+					<input name="name" id="prof_name"/>
+	            </div>
+		    <br>
+		    	<div class="form-group">
+	                <label>Picture:</label>
+					<input name="picture" id="picture"/>
+	            </div>
+		    <br>
+		    	<div class="form-group">
+					<label>About Me:</label>
+					<input id="about" name="about"/>
+		    	</div>
+		    <br>
+		    	<div class="form-group">
+					<label>Age:</label>
+					<input id="age" name="age"/>
+		    	</div>
+		    <br>
+		    	<div class="form-group">
+					<label>Email:</label>
+					<input id="email" name="email"/>
+		    	</div>
+		    <br>
+		    	<div class="form-group">
+					<label>Phone Number:</label>
+					<input id="phone" name="phone"/>
+		    	</div>
+		</fieldset>
 	    <br>
-	    <div class="form-group">
-                <label>Picture:</label>
-		<input name="picture" id="picture"/>
-            </div>
-	    <br>
-	    <div class="form-group">
-		<label>About Me:</label>
-		<input id="about" name="about"/>
-	    </div>
-	    <br>
-	    <div class="form-group">
-		<label>Age:</label>
-		<input id="age" name="age"/>
-	    </div>
-	    <br>
-	    <div class="form-group">
-		<label>Email:</label>
-		<input id="email" name="email"/>
-	    </div>
-	    <br>
-	    <div class="form-group">
-		<label>Phone Number:</label>
-		<input id="phone" name="phone"/>
-	    </div>
-	    <br>
-	    <div class="form-group">
-		<label>Interests:</label>
-		<container>
-		<input id="inter1" name="inter" type="checkbox" value="exploringSF">exploring SF</input><br>
-		<input id="inter2" name="inter" type="checkbox" value="nightlife">nightlife</input><br>
-		<input id="inter3" name="inter" type="checkbox" value="outdoors">outdoors</input><br>
-		<input id="inter4" name="inter" type="checkbox" value="sports">sports</input><br>
-		<input id="inter5" name="inter" type="checkbox" value="videogames">video games</input><br>
-		</container>
-	    </div>
-	</fieldset>
+	    <fieldset>
+			<legend>Interests:</legend>
+				<div class="form-group">
+					<label class="checkbox-inline">
+						<input id="inter1" name="inter" type="checkbox" value="expSF"> Exploring the city
+					</label>
+					<label class="checkbox-inline">
+						<input id="inter2" name="inter" type="checkbox" value="nightlife"> Nightlife
+					</label>
+					<label class="checkbox-inline">
+						<input id="inter3" name="inter" type="checkbox" value="outdoors"> Outdoors
+					</label>
+					<label class="checkbox-inline">
+						<input id="inter4" name="inter" type="checkbox" value="outdoors"> Sports
+					</label>
+					<label class="checkbox-inline">
+						<input id="inter5" name="inter" type="checkbox" value="outdoors"> Video Games
+					</label>
+				</div>
+		</fieldset>
+
 	<br>
-	<fieldset>
-	    <legend>Oracle Information</legend>
-	    <div class="form-group">
-		<label>Location:</label>
-		<input id="loc" name="loc"/>
-	    </div>
-	    <br>
-	    <div class="form-group">
-		<label>Group:</label>
-		<input id="group" name="group"/>
-	    </div>
-	    <br>
-	    <div class="form-group">
-		<label>Employee ID:</label>
-		<input id="empid" name="empid"/>
-	    </div>
-	</fieldset>
+		<fieldset>
+	    	<legend>Oracle Information</legend>
+	    	<div class="form-group">
+				<label>Location:</label>
+				<input id="loc" name="loc"/>
+	    	</div>
+	    	<div class="form-group">
+				<label>Group:</label>
+				<input id="group" name="group"/>
+	    	</div>
+	    	<div class="form-group">
+				<label>Employee ID:</label>
+				<input id="empid" name="empid"/>
+	    	</div>
+		</fieldset>
 	<br>
-	<fieldset>
-		<legend>Education Information</legend>
-	    <div class="form-group">
-		<label>School:</label>
-		<input id="school" name="school"/>
-	    </div>
-	    <br>
-	    <div class="form-group">
-		<label>Graduation Year:</label>
-		<input id="gradYear" name="gradYear"/>
-	    </div>
-	    <br>
-	    <div class="form-group">
-		<label>Involvement:</label>
-		<input id="involv" name="involv"/>
-	    </div>
+
+		<fieldset>
+			<legend>Education Information</legend>
+	    	<div class="form-group">
+				<label>School:</label>
+				<input id="school" name="school"/>
+	    	</div>
+	    	<div class="form-group">
+				<label>Graduation Year:</label>
+				<input id="gradYear" name="gradYear"/>
+	    	</div>
+	    	<div class="form-group">
+				<label>Involvement:</label>
+				<input id="involv" name="involv"/>
+	    	</div>
         </fieldset>
-	<br>
-	<fieldset>
-	    <button type="button" class="button" id="mybutton">Add My Profile</button>
-	</fieldset>
+      <br>
+	  <button type="button" class="btn btn-primary" id="mybutton" style="margin-bottom:80px">Add My Profile</button>
     </form>
 </div>
 

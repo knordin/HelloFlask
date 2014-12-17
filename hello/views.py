@@ -96,7 +96,7 @@ def login():
     			flash("Logged in successfully.")
     			return redirect(request.args.get("next") or url_for('index'))
     	else: 
-    		flash("Incorrect Username/Password Combination")
+    		flash('Incorrect Username/Password Combination')
     return render_template('login.html', form=form)
 
 @login_manager.user_loader
