@@ -10,7 +10,7 @@ class LoginForm(Form):
     username = TextField("username")
     password = PasswordField("password")
 
-data = [('expSF', 'exploring SF'), ('nightlife', 'nightlife'), ('outdoors', 'outdoors'), ('sports', 'sports'), ('videogames', 'video games')]
+data = [('exploring SF', 'exploring SF'), ('nightlife', 'nightlife'), ('outdoors', 'outdoors'), ('sports', 'sports'), ('videogames', 'video games')]
 
 class SearchForm(Form):
     Profname = TextField("Name")
