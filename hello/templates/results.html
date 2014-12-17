@@ -11,9 +11,6 @@
 		<th>Link</th>
 	</tr>
 </table>
-<h1 id="title"> </h1>
-<h1 id="mytitle"> </h1>
-<h1 id="sec"> </h1>
 
 <script type="text/javascript">
 var comments = {{ comments|tojson }};
@@ -31,7 +28,7 @@ for (i=0; i < comments.length; i++){
     var beg = "http://127.0.0.1:5000/viewprof/"
     var end = comments[i].Profname;
     a.href = beg.concat(end)
-    link.appendChild(a);s
+    link.appendChild(a);
 }
 
 </script>
