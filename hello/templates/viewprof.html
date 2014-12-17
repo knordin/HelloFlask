@@ -1,89 +1,72 @@
 {% from "util.html" import render_field %}
 
 {% extends "base.html" %}
+<style>
+.user-row {
+    margin-bottom: 14px;
+}
 
+.user-row:last-child {
+    margin-bottom: 0;
+}
+
+.dropdown-user {
+    margin: 13px 0;
+    padding: 5px;
+    height: 100%;
+}
+
+.dropdown-user:hover {
+    cursor: pointer;
+}
+
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+
+
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}
+.toppad
+{margin-top:20px;
+}
+</style>
 {% block content %}
 
-<div id="form">
-    <form name="my_profile">
-        <fieldset>
-	    <legend>Personal Information</legend>
-            <div class="form-group">
-                <label>Name:</label>
-		<label2>{{ comments["Profname"] }}</label2>
-            </div>
-	    <br><br>
-	    <div class="form-group">
-                <label>Picture:</label>
-		<label2><img src={{ comments["picture"] }} height="150" width = "150"></label2>
-            </div>
-            <br><br>
-	    <div class="form-group">
-		<label>About Me:</label>
-		<label2>{{ comments["about"] }}</label2>
-	    </div>
-	    <br><br>
-	    <div class="form-group">
-		<label>Age:</label>
-		<label2>{{ comments["age"] }}</label2>
-	    </div>
-	    <br><br>
-	    <div class="form-group">
-		<label>Email:</label>
-		<label2>{{ comments["email"] }}</label2>
-	    </div>
-	    <br><br>
-	    <div class="form-group">
-		<label>Phone Number:</label>
-		<label2>{{ comments["phone"] }}</label2>
-	    </div>
-	    <br><br>
-	    <div class="form-group">
-		<label>Interests:</label>
-		{% for i in comments["inter"] %}
-			<label2>{{ i }}</label2>
-		{% endfor %}
+<div class="container">
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{ comments["Profname"] }}</h3>
+        </div>
 
-	    </div>
-	</fieldset>
-	<br>
-	<fieldset>
-	    <legend>Oracle Information</legend>
-	    <div class="form-group">
-		<label>Location:</label>
-		<label2>{{ comments["loc"] }}</label2>
-	    </div>
-	    <br><br>
-	    <div class="form-group">
-		<label>Group:</label>
-		<label2>{{ comments["group"] }}</label2>
-	    </div>
-	    <br><br>
-	    <div class="form-group">
-		<label>Employee ID:</label>
-		<label2>{{ comments["empid"] }}</label2>
-	    </div>
-	</fieldset>
-	<br>
-	<fieldset>
-	    <legend>Education Information</legend>
-	    <div class="form-group">
-		<label>School:</label>
-		<label2>{{ comments["school"] }}</label2>
-	    </div>
-	    <br><br>
-	    <div class="form-group">
-		<label>Graduation Year:</label>
-		<label2>{{ comments["gradYear"] }}</label2>
-	    </div>
-	    <br><br>
-	    <div class="form-group">
-		<label>Involvement:</label>
-		<label2>{{ comments["involv"] }}</label2>
-	    </div>
-        </fieldset>
-	<br>
-    </form>
+
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3" align="center"> <img alt="User Pic" src={{comments["picture"]}} class="img-circle"> </div>
+                
+
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>About Me</td>
+                        <td>{{ comments["about"] }}</td>
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+    </div>
 </div>
-
 {% endblock %}

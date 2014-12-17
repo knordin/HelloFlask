@@ -2,7 +2,10 @@
 
 {% extends "base.html" %}
 
+{% block content %}
+
 <style>
+
 @import url(http://fonts.googleapis.com/css?family=Roboto:400);
 body {
   background-color:#fff;
@@ -43,27 +46,33 @@ h4 {
 }
 </style>
 
-
-{% block content %}
-
-<!--Pulling Awesome Font -->
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
 <div class="container">
-    <div class="row">
-        <div class="col-md-offset-5 col-md-3">
-            <div class="form-login">
-			<form method="POST"> 
-			<h4>Welcome back!</h4>
-				{{ form.hidden_tag()}}
-				{{ render_field(form.username, label=False, class="input-xlarge", placeholder="username") }}
-				{{ render_field(form.password, label=False, class="input-xlarge", placeholder="password") }} 
-
-			<input type="submit" value="Login" class="btn">
-			</form>
-			</div>
+	<div class="row">
+		<div class="form-login">
+			<div class="col-md-offset-5 col-md-3">
+            	<div class="form-login">
+            		<h4>Welcome back.</h4>
+            		<input type="text" id="userName" class="form-control input-sm chat-input" placeholder="username" />
+            		</br>
+            		<input type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
+            		</br>
+            	<div class="wrapper">
+            	<input type="submit" value="Login" class="btn btn-primary btn-md">
+            	</div>
+            	</div>
+            </div>
         </div>
     </div>
 </div>
+
+
+<!-- 	<form method="POST"> 
+		<h3>Welcome, please login</h3>
+			{{ form.hidden_tag()}}
+			{{ render_field(form.username, label=False, class="input-xlarge", placeholder="username") }}
+			{{ render_field(form.password, label=False, class="input-xlarge", placeholder="password") }} 
+		<input type="submit" value="Login" class="btn btn-primary">
+	</form>
+</div> -->
 
 {% endblock %}
