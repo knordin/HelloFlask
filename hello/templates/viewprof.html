@@ -1,54 +1,55 @@
 {% from "util.html" import render_field %}
 
 {% extends "base.html" %}
-<style>
-.user-row {
-    margin-bottom: 14px;
-}
 
-.user-row:last-child {
-    margin-bottom: 0;
-}
-
-.dropdown-user {
-    margin: 13px 0;
-    padding: 5px;
-    height: 100%;
-}
-
-.dropdown-user:hover {
-    cursor: pointer;
-}
-
-.table-user-information > tbody > tr {
-    border-top: 1px solid rgb(221, 221, 221);
-}
-
-.table-user-information > tbody > tr:first-child {
-    border-top: 0;
-}
-
-
-.table-user-information > tbody > tr > td {
-    border-top: 0;
-}
-.toppad
-{margin-top:20px;
-}
-</style>
 {% block content %}
 
+<style>
+h3  {
+  color:#33CCFF;
+}
+
+
+</style>
+
 <div class="container">
+  <div class="row" align="center">
+    <h3><b><i>{{comments["Profname"]}}, {{comments["age"]}}</i></b></h3>
+  </div>
+  <div class="row" align="center">
+    <img src={{comments["picture"]}} class="img-circle" height="200" width="200">
+  </div>
+
+  <div class="row" align="center">
+    <h4>{{comments["group"]}} Group, located at {{comments["loc"]}}<br>
+    Email: {{comments["email"]}}, Phone: {{comments["phone"]}}</h4>
+  </div>
+  <br>
+  <div class="row" align="center">
+  <div class="table" style="background-color:#E0E0E0; padding:20px; width:80%">
+    <tbody>
+      <tr>
+        <td><h4>About Me:</h4></td>
+        <td><i>"{{comments["about"]}}"</i></td>
+        <td><h4>Interests:</h4></td>
+          {% for i in comments["inter"] %}
+            <label2>{{ i }}</label2>
+          {% endfor %}
+        <td><h4>Education Information:</h4></td>
+        <td>{{comments["school"]}} University, Class of {{comments["gradYear"]}}</td><br>
+        <td>At school I was involved in: {{comments["involv"]}}</td>    
+      </tr>
+    </tbody>
+  </div>
+  </div>
+</div>
+
+
+
+<!-- <div class="container">
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h3 class="panel-title">{{ comments["Profname"] }}</h3>
+          <p class="text-primary">{{ comments["Profname"] }}</p>
         </div>
-
-
-            <div class="panel-body">
-              <div class="row">
                 <div class="col-md-3 col-lg-3" align="center"> <img alt="User Pic" src={{comments["picture"]}} class="img-circle"> </div>
                 
 
@@ -68,5 +69,5 @@
       </div>
     </div>
     </div>
-</div>
+</div> -->
 {% endblock %}
