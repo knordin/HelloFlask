@@ -21,6 +21,11 @@
 {% endblock %}
 
 <script>
+var tableRef = document.getElementById('myTable');
+var newRow = tableRef.addRow();
+for (i =0; i < comments.length; i++){
+    
+}
 function addRow(oneComment) {
     var table = document.getElementById("myTable");
     var row = table.insertRow(0);

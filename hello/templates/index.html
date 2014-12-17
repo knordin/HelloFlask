@@ -118,7 +118,7 @@ var extractjson = function(){
 	s["involv"]=$(involv)[0].value
 	var jsondoc = JSON.stringify(s)
 	$.post("/", jsondoc, function(){location.reload(), 
-					$(prof_name)[0].value = "", 
+					$(prof_name)[0].value = "",
 					$(picture)[0].value="",
 					$(about)[0].value = "",
 					$(age)[0].value = "",
