@@ -10,6 +10,7 @@ import unicodedata
 import ast
 
 @app.route('/', methods=['GET', 'POST'])
+#@login_required
 def index():
     print "current user", current_user.username
     data = request.values.keys()
@@ -31,6 +32,7 @@ def index():
     return render_template('index.html', comments=comments, current_user=current_user)
 
 @app.route('/viewprof/<username>', methods=['GET'])
+#@login_required
 def viewprof(username):
 	print current_user.username
 	print current_user.is_anonymous()
@@ -38,10 +40,10 @@ def viewprof(username):
 	results = db_connection.execute("""SELECT p.doc FROM user_profile p WHERE p.doc.username = :x""", x=current_user.username)
 	results = results.fetchone()[0]
 	data = json.loads(results)
-        print data
  	return render_template('viewprof.html', comments=data) 
 
 @app.route("/search", methods=['GET','POST'])
+#@login_required
 def search():
     form = SearchForm()
     if form.validate_on_submit():
@@ -51,37 +53,21 @@ def search():
 	    if request.form[i] != "":
 		where_clause.append("lower(p.doc." + i + ") like '%" + request.form[i] +"%' ")	
         for i in request.form.getlist('interests'):
-	    #print request.form.getlist('interests')
 	    where_clause.append("p.doc.inter." + i +" like 1")
 	if len(where_clause) > 0:
 	    all_wheres = " AND ".join(where_clause)
 	    sql = sql + "WHERE " + all_wheres
-	print "this was the sql"
         print sql
 	search_results = db_connection.execute(sql).fetchall()
 	results =[]
 	for i in range(len(search_results)):
             dict_string = json.loads(search_results[i][0])
 	    results.append(dict_string)
+	print "this is how many results"
+        print len(results)
 	return render_template('results.html', comments=results)
     return render_template('search.html', form=form)
 
-#@app.route("/search", method='POST')
-#def search_post(): 
-    #sql = """SELECT p.doc FROM user_profile p """
-    #where_clause = []
-    #for i in ['Profname','about','age','email','phone','loc','group','empid','school','gradYear','involv']:
-#	if request.form[i] != "":
-#	    where_clause.append("lower(p.doc." + i + ") like '%" + request.form[i] +"%' ")
-#    if len(where_clause) > 0:
-#        all_wheres = " AND ".join(where_clause)
-#	sql = sql + "WHERE " + all_wheres
-#    search_results = db_connection.execute(sql).fetchall()
-#    results =[]
-#    for i in range(len(search_results)):
-#        dict_string = ast.literal_eval(search_results[i][0])
-#        results.append(dict_string)
-#    return render_template('results.html', comments=results)
  
 @app.route("/login", methods=['GET', 'POST'])
 def login():
