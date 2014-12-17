@@ -12,9 +12,9 @@
     	    <th>Link</th>
        </tr>
        <tr>
-    	    <td>{{ comments[0]["Profname"] }}</td>
-    	    <td>{{ comments[0]["picture"] }}</td>		
-    	    <td> <a href="http://127.0.0.1:5000/viewprof/{{comments[0]['Profname']}}">Click here for more info</a></td>
+    	    <td> {{comments[0]['Profname']}}</td>
+    	    <td> {{comments[0]['picture']}}</td>
+	    <td> <a href="http://127.0.0.1:5000/viewprof/{{comments[0]['Profname']}}">Click here for more info</a></td>		
        </tr>
     </table>
 </div>
