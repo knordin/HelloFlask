@@ -1,5 +1,5 @@
-from flask import render_template, url_for, redirect, request, flash
-from forms import CommentForm, LoginForm
+from flask import render_template, url_for, redirect, request, flash, render_template_string
+from forms import CommentForm, LoginForm, SearchForm
 from hello import app, db, login_manager, db_connection
 from models import UserProfile, User
 from flask.ext.login import LoginManager, UserMixin, login_required, login_user, current_user
@@ -41,30 +41,47 @@ def viewprof(username):
         print data
  	return render_template('viewprof.html', comments=data) 
 
-@app.route("/search")
+@app.route("/search", methods=['GET','POST'])
 def search():
-    return render_template('search.html')
+    form = SearchForm()
+    if form.validate_on_submit():
+        sql = """SELECT p.doc FROM user_profile p """
+	where_clause = []
+	for i in ['Profname','about','age','email','phone','loc','group','empid','school','gradYear','involv']:
+	    if request.form[i] != "":
+		where_clause.append("lower(p.doc." + i + ") like '%" + request.form[i] +"%' ")	
+        for i in request.form.getlist('interests'):
+	    #print request.form.getlist('interests')
+	    where_clause.append("p.doc.inter." + i +" like 1")
+	if len(where_clause) > 0:
+	    all_wheres = " AND ".join(where_clause)
+	    sql = sql + "WHERE " + all_wheres
+	print "this was the sql"
+        print sql
+	search_results = db_connection.execute(sql).fetchall()
+	results =[]
+	for i in range(len(search_results)):
+            dict_string = json.loads(search_results[i][0])
+	    results.append(dict_string)
+	return render_template('results.html', comments=results)
+    return render_template('search.html', form=form)
 
-@app.route("/search", methods=['POST'])
-def search_post(): 
-    sql = """SELECT p.doc FROM user_profile p """
-    where_clause = []
-    for i in ['Profname','about','age','email','phone','loc','group','empid','school','gradYear','involv']:
-	if request.form[i] != "":
-	    where_clause.append("lower(p.doc." + i + ") like '%" + request.form[i] +"%' ")
-    print len(request.form['inter'])
-    #for i in len(inter)
-    #if request.form['inter1']:
-	    #where_clause.append("lower(p.doc." + i + ") like '%" + request.form['inter1'] +"%' ")
-    if len(where_clause) > 0:
-        all_wheres = " AND ".join(where_clause)
-	sql = sql + "WHERE " + all_wheres
-    search_results = db_connection.execute(sql).fetchall()
-    results =[]
-    for i in range(len(search_results)):
-        dict_string = ast.literal_eval(search_results[i][0])
-        results.append(dict_string)
-    return render_template('results.html', comments=results)
+#@app.route("/search", method='POST')
+#def search_post(): 
+    #sql = """SELECT p.doc FROM user_profile p """
+    #where_clause = []
+    #for i in ['Profname','about','age','email','phone','loc','group','empid','school','gradYear','involv']:
+#	if request.form[i] != "":
+#	    where_clause.append("lower(p.doc." + i + ") like '%" + request.form[i] +"%' ")
+#    if len(where_clause) > 0:
+#        all_wheres = " AND ".join(where_clause)
+#	sql = sql + "WHERE " + all_wheres
+#    search_results = db_connection.execute(sql).fetchall()
+#    results =[]
+#    for i in range(len(search_results)):
+#        dict_string = ast.literal_eval(search_results[i][0])
+#        results.append(dict_string)
+#    return render_template('results.html', comments=results)
  
 @app.route("/login", methods=['GET', 'POST'])
 def login():

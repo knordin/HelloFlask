@@ -39,7 +39,6 @@
 		    	</div>
 		</fieldset>
 	    <br>
-
 	    <fieldset>
 			<legend>Interests:</legend>
 				<div class="form-group">
@@ -60,7 +59,6 @@
 					</label>
 				</div>
 		</fieldset>
-
 
 	<br>
 		<fieldset>
@@ -112,12 +110,12 @@ var extractjson = function(){
 	s["age"]=$(age)[0].value
 	s["email"]=$(email)[0].value
 	s["phone"]=$(phone)[0].value
-	s["inter"]=[]
-	s["inter"].push($(inter1)[0].checked)
-	s["inter"].push($(inter2)[0].checked)
-	s["inter"].push($(inter3)[0].checked)
-	s["inter"].push($(inter4)[0].checked)
-	s["inter"].push($(inter5)[0].checked)
+	s["inter"]={}
+        s["inter"][$(inter1)[0].value] = $(inter1)[0].checked ? 1 : 0;
+	s["inter"][$(inter2)[0].value] = $(inter2)[0].checked ? 1 : 0;
+	s["inter"][$(inter3)[0].value] = $(inter3)[0].checked ? 1 : 0;
+	s["inter"][$(inter4)[0].value] = $(inter4)[0].checked ? 1 : 0;
+	s["inter"][$(inter5)[0].value] = $(inter5)[0].checked ? 1 : 0;
 	s["loc"]=$(loc)[0].value
 	s["group"]=$(group)[0].value
 	s["empid"]=$(empid)[0].value
@@ -126,7 +124,7 @@ var extractjson = function(){
 	s["involv"]=$(involv)[0].value
 	var jsondoc = JSON.stringify(s)
 	$.post("/", jsondoc, function(){location.reload(), 
-					$(prof_name)[0].value = "", 
+					$(prof_name)[0].value = "",
 					$(picture)[0].value="",
 					$(about)[0].value = "",
 					$(age)[0].value = "",
