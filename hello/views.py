@@ -12,14 +12,10 @@ import ast
 @app.route('/edit', methods=['GET', 'POST'])
 @login_required
 def index():
-    print "current user", current_user.username
     data = request.values.keys()
-    print data
     if len(data)>0:
-	print data[0]
         #do we have this profile already?
         existing = db_connection.execute("""SELECT p.comment_id, p.doc FROM user_profile p where p.doc.username = :x""", x=current_user.username).fetchone()[0]
-        print "existing", existing
         if existing:
             this_profile = UserProfile.get(existing)
             this_profile.doc = data[0]
@@ -34,10 +30,7 @@ def index():
 @app.route('/viewprof/<username>', methods=['GET'])
 @login_required
 def viewprof(username):
-	print current_user.username
-	print current_user.is_anonymous()
-	print current_user.is_anonymous
-	results = db_connection.execute("""SELECT p.doc FROM user_profile p WHERE p.doc.username = :x""", x=current_user.username)
+	results = db_connection.execute("""SELECT p.doc FROM user_profile p WHERE p.doc.username = :x""", x=username)
 	results = results.fetchone()[0]
 	data = json.loads(results)
  	return render_template('viewprof.html', comments=data) 
@@ -57,14 +50,11 @@ def search():
 	if len(where_clause) > 0:
 	    all_wheres = " AND ".join(where_clause)
 	    sql = sql + "WHERE " + all_wheres
-        print sql
 	search_results = db_connection.execute(sql).fetchall()
 	results =[]
 	for i in range(len(search_results)):
             dict_string = json.loads(search_results[i][0])
 	    results.append(dict_string)
-	print "this is how many results"
-        print len(results)
 	return render_template('results.html', comments=results)
     return render_template('search.html', form=form)
 
@@ -79,7 +69,7 @@ def login():
     	if user is not None:
     		if user.password == password:
     			login_user(user)
-    			flash("Logged in successfully.")
+    			#flash("Logged in successfully.")
     			return redirect(request.args.get("next") or url_for('index'))
     	else: 
     		flash('Incorrect Username/Password Combination')

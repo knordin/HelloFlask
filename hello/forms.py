@@ -1,7 +1,5 @@
 from flask.ext.wtf import Form
 from wtforms import TextField, validators, PasswordField, SelectMultipleField, widgets
-# from werkzeug import secure_filename
-# from flask_wtf.file import Filefield
 
 class CommentForm(Form):
     text = TextField('Comment', [validators.Required()])
@@ -21,7 +19,7 @@ class SearchForm(Form):
     interests = SelectMultipleField("Interests", 
 	choices = data,
         option_widget=widgets.CheckboxInput(),
-        widget=widgets.ListWidget(prefix_label=False)
+        widget = widgets.ListWidget(prefix_label=True)
 	)
     loc = TextField("Location")
     group = TextField("Group")
@@ -29,8 +27,4 @@ class SearchForm(Form):
     school = TextField("School")
     gradYear = TextField("Graduation Year")
     involv = TextField("Involvement")
-    
-
-# class PhotoForm(Form):
-# 	photo = FileField('Your Photo')
 
