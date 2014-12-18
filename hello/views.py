@@ -9,7 +9,7 @@ import json
 import unicodedata
 import ast
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/edit', methods=['GET', 'POST'])
 @login_required
 def index():
     print "current user", current_user.username
@@ -69,7 +69,7 @@ def search():
     return render_template('search.html', form=form)
 
  
-@app.route("/login", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
