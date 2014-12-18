@@ -5,11 +5,10 @@
 {% block content %}
 
 <table class=table id="myTable">
-	<tr>
-		<th>Profile Name</th>
-		<th>Picture</th>		
-		<th>Link</th>
-	</tr>
+    <tr>
+        <th>Profile Name</th>
+        <th>Picture</th>        
+    </tr>
 </table>
 
 <script type="text/javascript">
@@ -17,20 +16,20 @@ var comments = {{ comments|tojson }};
 for (i=0; i < comments.length; i++){
     var table = document.getElementById("myTable");
     var row = table.insertRow(-1);
-    var pname = row.insertCell(0);
-    var pic = row.insertCell(1);
-    var link = row.insertCell(2);
-    pname.innerHTML = comments[i].Profname;
-    pic.innerHTML = comments[i].picture;
+    var link = row.insertCell(0);
+    var x = row.insertCell(1);
+    x.innerHTML="New Cell";
+    var img = document.createElement('img');
+    img.src = comments[i].picture;
+    x.appendChild(img);
     var a = document.createElement('a');
-    var linkText = document.createTextNode("Click here for more info");
+    var linkText = document.createTextNode(comments[i].Profname);
     a.appendChild(linkText);
     var beg = "http://127.0.0.1:5000/viewprof/"
-    var end = comments[i].Profname;
+    var end = comments[i].username;
     a.href = beg.concat(end)
     link.appendChild(a);
 }
-
 </script>
 
 {% endblock %}
