@@ -33,7 +33,9 @@ h3  {
         <td><i>"{{comments["about"]}}"</i></td>
         <td><h4>Interests:</h4></td>
           {% for i in comments["inter"] %}
-            <label2>{{ i }}</label2>
+            {% if comments["inter"][i] ==1 %}
+              <label2>{{ i }}</label2>
+            {%endif%}
           {% endfor %}
         <td><h4>Education Information:</h4></td>
         <td>{{comments["school"]}} University, Class of {{comments["gradYear"]}}</td><br>
