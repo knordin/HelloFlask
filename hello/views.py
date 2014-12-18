@@ -10,7 +10,7 @@ import unicodedata
 import ast
 
 @app.route('/', methods=['GET', 'POST'])
-#@login_required
+@login_required
 def index():
     print "current user", current_user.username
     data = request.values.keys()
@@ -32,7 +32,7 @@ def index():
     return render_template('index.html', comments=comments, current_user=current_user)
 
 @app.route('/viewprof/<username>', methods=['GET'])
-#@login_required
+@login_required
 def viewprof(username):
 	print current_user.username
 	print current_user.is_anonymous()
@@ -43,7 +43,7 @@ def viewprof(username):
  	return render_template('viewprof.html', comments=data) 
 
 @app.route("/search", methods=['GET','POST'])
-#@login_required
+@login_required
 def search():
     form = SearchForm()
     if form.validate_on_submit():
