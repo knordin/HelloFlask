@@ -8,6 +8,11 @@
 h3 {
   color:#33CCFF;	
 }
+
+ul {
+  list-style-type: none;
+}
+
 </style>
 
 
@@ -29,7 +34,11 @@ h3 {
 <br>
 	<fieldset rows="5">
 		<legend>Interests</legend>
-			{{ render_field(form.interests, label=False, class="input-xlarge", align="center") }}
+  		<div class="row" align="center">
+			<dl>
+			<dd> {{form.interests(class_=form.interests.checkbox)}}</dd>
+			</dl>
+		</div>
 	</fieldset>
 <br>
 <br>
