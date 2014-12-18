@@ -25,11 +25,10 @@ for (i=0; i < comments.length; i++){
     var linkText = document.createTextNode(comments[i].Profname);
     a.appendChild(linkText);
     var beg = "http://127.0.0.1:5000/viewprof/"
-    var end = comments[i].Profname;
+    var end = comments[i].username;
     a.href = beg.concat(end)
     pname.appendChild(a);
 }
-
 </script>
 
 {% endblock %}
