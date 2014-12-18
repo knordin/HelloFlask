@@ -11,8 +11,13 @@ h3 {
 
 ul {
   list-style-type: none;
+  text-align:center;
+  padding-left:0px;
 }
 
+dl {
+	display:inline-block;
+}
 </style>
 
 
@@ -32,11 +37,11 @@ ul {
 	</fieldset>
 <br>
 <br>
-	<fieldset rows="5">
+	<fieldset>
 		<legend>Interests</legend>
-  		<div class="row" align="center">
+		<div class="row" align="center">
 			<dl>
-			<dd> {{form.interests(class_=form.interests.checkbox)}}</dd>
+			{{form.interests}}
 			</dl>
 		</div>
 	</fieldset>

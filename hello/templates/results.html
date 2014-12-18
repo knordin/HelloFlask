@@ -20,7 +20,8 @@ for (i=0; i < comments.length; i++){
     var pic = row.insertCell(1);
     var img = document.createElement('img');
     img.src = comments[i].picture;
-    pic.appendChild(img)
+    img.style.height = "100px"
+    pic.appendChild(img);
     var a = document.createElement('a');
     var linkText = document.createTextNode(comments[i].Profname);
     a.appendChild(linkText);
