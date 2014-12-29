@@ -2,7 +2,7 @@ from hello import db
 from flask.ext.login import LoginManager, UserMixin, login_required
 from sqlalchemy import CheckConstraint
 
-
+#defining the UserProfile table to have two columns; comment id and a json string
 class UserProfile(db.Model):
     is_anonymous = False
     comment_id = db.Column(db.Integer, db.Sequence('id_seq'), primary_key=True)
@@ -16,7 +16,7 @@ class UserProfile(db.Model):
     def get(cls, id):
         return UserProfile.query.filter_by(comment_id=id).first()
 
-
+#defining the User table to have three columns; user id, username and password
 class User(db.Model):
     user_id = db.Column(db.Integer, db.Sequence('user_id_seq'), primary_key=True)
     username = db.Column(db.String(50), nullable=False)

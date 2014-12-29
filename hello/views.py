@@ -1,5 +1,5 @@
 from flask import render_template, url_for, redirect, request, flash, render_template_string
-from forms import CommentForm, LoginForm, SearchForm
+from forms import LoginForm, SearchForm
 from hello import app, db, login_manager, db_connection
 from models import UserProfile, User
 from flask.ext.login import LoginManager, UserMixin, login_required, login_user, current_user
@@ -9,12 +9,14 @@ import json
 import unicodedata
 import ast
 
+# logic for the edit my profile page
+# pull text from input fields and rewrite JSON entry in the DB associated with that profile
 @app.route('/edit', methods=['GET', 'POST'])
 @login_required
 def index():
     data = request.values.keys()
     if len(data)>0:
-        #do we have this profile already?
+        #checks if the profile exists
         existing = db_connection.execute("""SELECT p.comment_id, p.doc FROM user_profile p where p.doc.username = :x""", x=current_user.username).fetchone()[0]
         if existing:
             this_profile = UserProfile.get(existing)
@@ -27,6 +29,8 @@ def index():
     comments = UserProfile.query.order_by(db.desc(UserProfile.comment_id))
     return render_template('index.html', comments=comments, current_user=current_user)
 
+# logic for the view profile page
+# pull profile from the DB and return the results
 @app.route('/viewprof/<username>', methods=['GET'])
 @login_required
 def viewprof(username):
@@ -35,6 +39,14 @@ def viewprof(username):
 	data = json.loads(results)
  	return render_template('viewprof.html', comments=data) 
 
+# logic for the search page
+# creates sql query based on input fields in the search page, executes sql query on the DB, redirects to the results page
+# example sql statement created will look like this:
+#	SELECT p.doc 
+#	FROM user_profile p 
+#	WHERE lower(p.doc.Profname) like '%j%'  
+#	AND lower(p.doc.gradYear) like '%2014%'  
+#	AND p.doc.inter.outdoors like 1
 @app.route("/search", methods=['GET','POST'])
 @login_required
 def search():
@@ -42,14 +54,19 @@ def search():
     if form.validate_on_submit():
         sql = """SELECT p.doc FROM user_profile p """
 	where_clause = []
+        # search through each input field to check if there was inputted text
+	# if yes, create a sql statement to search the JSON field for that text
 	for i in ['Profname','about','age','email','phone','loc','group','empid','school','gradYear','involv']:
 	    if request.form[i] != "":
 		where_clause.append("lower(p.doc." + i + ") like '%" + request.form[i] +"%' ")	
         for i in request.form.getlist('interests'):
 	    where_clause.append("p.doc.inter." + i +" like 1")
+	# append all the AND sequel clauses
+	# add in the WHERE clause followed by all the AND clauses
 	if len(where_clause) > 0:
 	    all_wheres = " AND ".join(where_clause)
-	    sql = sql + "WHERE " + all_wheres
+	    sql = sql + "WHERE " + all_wheres	
+	# execute the sql statement on the DB and return the results page showing all the matches
 	search_results = db_connection.execute(sql).fetchall()
 	results =[]
 	for i in range(len(search_results)):
@@ -58,7 +75,8 @@ def search():
 	return render_template('results.html', comments=results)
     return render_template('search.html', form=form)
 
- 
+# logic for login
+# confirms username & password combination is in DB before granting access to the rest of the application
 @app.route("/", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -69,7 +87,6 @@ def login():
     	if user is not None:
     		if user.password == password:
     			login_user(user)
-    			#flash("Logged in successfully.")
     			return redirect(request.args.get("next") or url_for('index'))
     	else: 
     		flash('Incorrect Username/Password Combination')

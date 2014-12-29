@@ -1,15 +1,15 @@
 from flask.ext.wtf import Form
 from wtforms import TextField, validators, PasswordField, SelectMultipleField, widgets
 
-class CommentForm(Form):
-    text = TextField('Comment', [validators.Required()])
-
+# form used for login page
 class LoginForm(Form):
     username = TextField("username")
     password = PasswordField("password")
 
+# options for the select multiple field in the search form
 data = [('exploring', 'exploring'), ('nightlife', 'nightlife'), ('outdoors', 'outdoors'), ('sports', 'sports'), ('videogames', 'video games')]
 
+# form used for search page
 class SearchForm(Form):
     Profname = TextField("Name")
     about = TextField("About Me")
