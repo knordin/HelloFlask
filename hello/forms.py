@@ -12,6 +12,7 @@ data = [('exploring', 'exploring'), ('nightlife', 'nightlife'), ('outdoors', 'ou
 # form used for search page
 class SearchForm(Form):
     Profname = TextField("Name")
+    picture = TextField("Picture")
     about = TextField("About Me")
     age = TextField("Age")
     email = TextField("Email")

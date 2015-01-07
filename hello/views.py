@@ -14,20 +14,35 @@ import ast
 @app.route('/edit', methods=['GET', 'POST'])
 @login_required
 def index():
-    data = request.values.keys()
-    if len(data)>0:
-        #checks if the profile exists
-        existing = db_connection.execute("""SELECT p.comment_id, p.doc FROM user_profile p where p.doc.username = :x""", x=current_user.username).fetchone()[0]
-        if existing:
-            this_profile = UserProfile.get(existing)
-            this_profile.doc = data[0]
-            db.session.commit()
-        else:
-            db.session.add(UserProfile(data[0]))
-            db.session.commit()
-    	return redirect(url_for('viewprof', username=current_user.username))
-    comments = UserProfile.query.order_by(db.desc(UserProfile.comment_id))
-    return render_template('index.html', comments=comments, current_user=current_user)
+    form = SearchForm()
+    if form.validate_on_submit():
+	# creating dictionary to store text from input text fields
+        s = {}
+	for i in ['Profname','about','age','email','phone','loc','group','empid','school','gradYear','involv', 'picture']:
+	    if request.form[i] != "":
+		s[i] = request.form[i]
+	    else:
+		s[i] = ''
+	s['inter'] = {}
+	s['username'] = current_user.username
+	for i in ['exploring', 'nightlife', 'outdoors', 'sports', 'videogames']:
+	    if i in request.form.getlist('interests'):
+		s['inter'][i] = 1
+	    else:	
+		s['inter'][i] = 0
+	#converting dictionary to JSON
+	json_string = json.dumps(s)
+	#checking if a profile with the username already exists in the db
+	result = db_connection.execute("""SELECT p.comment_id, p.doc FROM user_profile p WHERE p.doc.username = :x""", x=current_user.username).fetchone()[0] 
+	if result:
+	    this_profile = UserProfile.get(result)
+	    this_profile.doc = json_string
+	    db.session.commit()
+	else:
+	    db.session.add(UserProfile(json_string))
+	    db.session.commit()
+	return redirect(url_for('viewprof', username = current_user.username))
+    return render_template('index.html', form=form)
 
 # logic for the view profile page
 # pull profile from the DB and return the results
