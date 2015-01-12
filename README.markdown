@@ -1,5 +1,9 @@
 # JaSON
 
+## Getting Started on building a web app using Oracle DB with JSON functionality
+## An introduction
+
+
 The JaSON application is a template web application that extends Flask, a lightweight microframework for Python. The demo uses Twitter Bootstrap for style, Oracle DB for the database, and SQL Alchemy for easy DB connectivity.
  
 JaSON was built to be a simple demo that showcases how using JSON as a document store with Oracle DB 12c provides a flexible and scalable development environment, even for novice web developers. In this document, we’ll walk you through how to install and setup the demo application, the general file structure, some details about the tech stack, and a summary of the JSON functionality it showcases.
@@ -37,6 +41,14 @@ Although it is possible for a Flask app to be contained entirely within a single
 -   'models.py' – Contains the database model classes for SQLAlchemy.
 -   'views.py' – Contains the app views.
 -   'startup.sql' – Contains the sql scripts to create users, define privileges and create tables required for the app.
+
+## Tech Stack Details
+
+Here’s a diagram depicting the stack moving from back-end to front-end: 
+
+[url for image]
+
+SQLAlchemy is a database toolkit for python that uses cx_oracle to connect to Oracle DB. This connection allows you to write SQL statements directly into the Python code. Flask is a lightweight web framework for Python with a simple but extensible core. On the front-end we’re using Bootstrap, a framework designed by Twitter for faster and easier web development. 
 
 ## Scope and Purpose
 
