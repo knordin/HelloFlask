@@ -63,5 +63,7 @@ we are utilizing the check constraint “ENSURE_JSON” and utilizing JSON dot n
 
 ## Screenshot
 
-![](https://raw.github.com/fogleman/HelloFlask/master/screenshot.png)
 ![](https://github.com/knordin/JaSON/blob/master/LoginScreenshot.png)
+![](https://github.com/knordin/JaSON/blob/master/EditProfileScreenshot.png)
+![](https://github.com/knordin/JaSON/blob/master/ProfileScreenshot.png)
+![](https://github.com/knordin/JaSON/blob/master/SearchScreenshot.png)
