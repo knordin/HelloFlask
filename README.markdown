@@ -11,15 +11,17 @@ JaSON was built to be a simple demo that showcases how using JSON as a document 
 
 ## Installing Dependencies
 
-    In order to run the app on your machine you’ll need to follow these quick installation steps:
-        1.	Download and configure an Oracle DB 12c.
-        2.	If you do not already have python on your machine, you will need to download it from here. If you do not already                have pip installed on your machine, you will need to follow these instructions.
-        3.	In your command window, run;                    	
-            a.	pip install Flask
-            b.	pip install Flask-SQLAlchemy
-            c.	pip install Flask-WTF
-        4.	Install bootstrap by following these instructions.
-        5.	Clone our git repo https://github.com/knordin/JaSON
+In order to run the app on your machine you’ll need to follow these quick installation steps:
+ 1.	Download and configure an Oracle DB 12c.
+ 2.	If you do not already have python on your machine, you will need to download it from here. If you do not already                have pip installed on your machine, you will need to follow these instructions.
+ 3.	In your command window, run;         
+ 
+           pip install Flask
+           pip install Flask-SQLAlchemy
+           pip install Flask-WTF
+
+ 4.	Install bootstrap by following these instructions.
+ 5.	Clone our git repo https://github.com/knordin/JaSON
 
 ## Running the DB Setup Script
 
