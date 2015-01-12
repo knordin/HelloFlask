@@ -1,6 +1,7 @@
 # JaSON
 
-## Getting Started on building a web app using Oracle DB with JSON functionality
+### Getting Started on building a web app using Oracle DB with JSON functionality
+
 ## An introduction
 
 
