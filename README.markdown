@@ -61,9 +61,16 @@ JSON functionality
 The application showcases several handy JSON functions, both in SQL and Python. In SQL, 
 we are utilizing the check constraint “ENSURE_JSON” and utilizing JSON dot notation to access the data.  In Python, we are also using JSON dot notation, as well as using the methods json.dump() and json.loads() to encode data into JSON. 
 
-## Screenshot
+## Screenshots
 
+Login Page
 ![](https://github.com/knordin/JaSON/blob/master/LoginScreenshot.png)
+
+Edit Profile Page
 ![](https://github.com/knordin/JaSON/blob/master/EditProfileScreenshot.png)
+
+View Profile Page
 ![](https://github.com/knordin/JaSON/blob/master/ProfileScreenshot.png)
+
+Search Profile Page
 ![](https://github.com/knordin/JaSON/blob/master/SearchScreenshot.png)
