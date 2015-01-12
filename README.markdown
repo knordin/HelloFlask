@@ -49,7 +49,7 @@ Although it is possible for a Flask app to be contained entirely within a single
 
 Here’s a diagram depicting the stack moving from back-end to front-end: 
 
-[url for image]
+![](http://i57.tinypic.com/r7orhs.png)
 
 SQLAlchemy is a database toolkit for python that uses cx_oracle to connect to Oracle DB. This connection allows you to write SQL statements directly into the Python code. Flask is a lightweight web framework for Python with a simple but extensible core. On the front-end we’re using Bootstrap, a framework designed by Twitter for faster and easier web development. 
 
