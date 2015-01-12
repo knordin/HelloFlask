@@ -37,7 +37,7 @@ Now you are ready to run the application. All you need to do is open a command w
 
 Although it is possible for a Flask app to be contained entirely within a single Python module, this project splits different functionality into different modules to facilitate maintainability. Below is a description of each module.
 
--   '__init__.py' – Constructs the Flask app object and configures it. Imports the other modules to emulate a single-model application.
+-   'init.py' – Constructs the Flask app object and configures it. Imports the other modules to emulate a single-model application.
 -   'config.py' – Contains the app configuration and DB connection.
 -   'forms.py' – Contains WTForms Form objects for use in views and templates
 -   'hooks.py' – Contains Flask and Jinja helper methods.
