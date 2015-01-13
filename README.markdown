@@ -59,7 +59,7 @@ The purpose of this app is to help you learn Oracle DB, SQL, and web app buildin
  
 JSON functionality
 The application showcases several handy JSON functions, both in SQL and Python. In SQL, 
-we are utilizing the check constraint “ENSURE_JSON” and utilizing JSON dot notation to access the data.  In Python, we are also using JSON dot notation, as well as using the methods json.dump() and json.loads() to encode data into JSON. 
+we are utilizing the check constraint “ENSURE JSON”, JSON dot notation, JSON Search Index and the method "json_textcontains()".  In Python, we are using JSON dot notation and the methods json.dump() and json.loads() to encode data into JSON. 
 
 ## Screenshots
 
