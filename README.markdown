@@ -57,9 +57,10 @@ SQLAlchemy is a database toolkit for python that uses cx_oracle to connect to Or
 
 The purpose of this app is to help you learn Oracle DB, SQL, and web app building skills in Python. It’s meant to be quick and simple, using popular developer tools to showcase powerful Oracle DB & JSON functionality. The app is a basic social directory template, the “Hello, World!” of web applications. It’s flexible and dynamic based on its use of JSON as a document store as opposed to a rigid schema.
  
-JSON functionality
+##### JSON functionality
+
 The application showcases several handy JSON functions, both in SQL and Python. In SQL, 
-we are utilizing the check constraint “ENSURE_JSON” and utilizing JSON dot notation to access the data.  In Python, we are also using JSON dot notation, as well as using the methods json.dump() and json.loads() to encode data into JSON. 
+we are utilizing the check constraint “ENSURE JSON”, JSON dot notation, JSON Search Index and the method "json_textcontains()".  In Python, we are using JSON dot notation and the methods json.dump() and json.loads() to encode data into JSON. 
 
 ## Screenshots
 
