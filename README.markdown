@@ -73,5 +73,8 @@ Edit Profile Page
 View Profile Page
 ![](https://github.com/knordin/JaSON/blob/master/ProfileScreenshot.png)
 
-Search Profile Page
-![](https://github.com/knordin/JaSON/blob/master/SearchScreenshot.png)
+General Search Page
+![](https://github.com/knordin/JaSON/blob/master/GeneralSearchScreenshot.png)
+
+Advanced Search Page
+![](https://github.com/knordin/JaSON/blob/master/AdvancedSearchScreenshot.png)
