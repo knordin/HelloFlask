@@ -65,16 +65,16 @@ we are utilizing the check constraint “ENSURE JSON”, JSON dot notation, JSON
 ## Screenshots
 
 Login Page
-![](https://github.com/knordin/JaSON/blob/master/LoginScreenshot.png)
+![](https://github.com/knordin/JaSON/blob/master/Login.png)
 
 Edit Profile Page
-![](https://github.com/knordin/JaSON/blob/master/EditProfileScreenshot.png)
+![](https://github.com/knordin/JaSON/blob/master/Edit%20Profile.png)
 
 View Profile Page
-![](https://github.com/knordin/JaSON/blob/master/ProfileScreenshot.png)
+![](https://github.com/knordin/JaSON/blob/master/Profile.png)
 
 General Search Page
-![](https://github.com/knordin/JaSON/blob/master/GeneralSearchScreenshot.png)
+![](https://github.com/knordin/JaSON/blob/master/General%20Search.png)
 
 Advanced Search Page
-![](https://github.com/knordin/JaSON/blob/master/AdvancedSearchScreenshot.png)
+![](https://github.com/knordin/JaSON/blob/master/Advanced%20Search.png)
