@@ -1,18 +1,18 @@
 # JaSON
 
-### Getting Started on building a web app using Oracle DB with JSON functionality
+### Getting Started on building a web app using Oracle Database with JSON functionality
 
 ## An introduction
 
 
-The JaSON application is a template web application that extends Flask, a lightweight microframework for Python. The demo uses Twitter Bootstrap for style, Oracle DB for the database, and SQL Alchemy for easy DB connectivity.
+The JaSON application is a template web application that extends Flask, a lightweight microframework for Python. The demo uses Twitter Bootstrap for style, Oracle Database for the database, and SQL Alchemy for easy DB connectivity.
  
-JaSON was built to be a simple demo that showcases how using JSON as a document store with Oracle DB 12c provides a flexible and scalable development environment, even for novice web developers. In this document, we’ll walk you through how to install and setup the demo application, the general file structure, some details about the tech stack, and a summary of the JSON functionality it showcases.
+JaSON was built to be a simple demo that showcases how using JSON as a document store with Oracle Database 12c provides a flexible and scalable development environment, even for novice web developers. In this document, we’ll walk you through how to install and setup the demo application, the general file structure, some details about the tech stack, and a summary of the JSON functionality it showcases.
 
 ## Installing Dependencies
 
 In order to run the app on your machine you’ll need to follow these quick installation steps:
- 1.	Download and configure an Oracle DB 12c.
+ 1.	Download and configure an Oracle Database 12c.
  2.	If you do not already have python on your machine, you will need to download it from here. If you do not already                have pip installed on your machine, you will need to follow these instructions.
  3.	In your command window, run;         
  
@@ -32,6 +32,10 @@ Once you have successfully installed all the dependencies above, you’ll need t
 Now you are ready to run the application. All you need to do is open a command window and run:
 
     python main.py  
+    
+Then open your browser and go to: 
+
+    http://127.0.0.1:5000/
 
 ## Modules
 
@@ -51,11 +55,11 @@ Here’s a diagram depicting the stack moving from back-end to front-end:
 
 ![](http://i57.tinypic.com/r7orhs.png)
 
-SQLAlchemy is a database toolkit for python that uses cx_oracle to connect to Oracle DB. This connection allows you to write SQL statements directly into the Python code. Flask is a lightweight web framework for Python with a simple but extensible core. On the front-end we’re using Bootstrap, a framework designed by Twitter for faster and easier web development. 
+SQLAlchemy is a database toolkit for python that uses cx_oracle to connect to Oracle Database. This connection allows you to write SQL statements directly into the Python code. Flask is a lightweight web framework for Python with a simple but extensible core. On the front-end we’re using Bootstrap, a framework designed by Twitter for faster and easier web development. 
 
 ## Scope and Purpose
 
-The purpose of this app is to help you learn Oracle DB, SQL, and web app building skills in Python. It’s meant to be quick and simple, using popular developer tools to showcase powerful Oracle DB & JSON functionality. The app is a basic social directory template, the “Hello, World!” of web applications. It’s flexible and dynamic based on its use of JSON as a document store as opposed to a rigid schema.
+The purpose of this app is to help you learn Oracle Database, SQL, and web app building skills in Python. It’s meant to be quick and simple, using popular developer tools to showcase powerful Oracle Database & JSON functionality. The app is a basic social directory template, the “Hello, World!” of web applications. It’s flexible and dynamic based on its use of JSON as a document store as opposed to a rigid schema.
  
 ##### JSON functionality
 
