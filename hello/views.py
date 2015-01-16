@@ -18,7 +18,7 @@ def index():
     if form.validate_on_submit():
 	# creating dictionary to store text from input text fields
         s = {}
-	for i in ['Profname','about','age','email','phone','loc','group','empid','school','gradYear','involv', 'picture']:
+	for i in ['Profname','about','age','email','phone','loc','empid','school','gradYear','involv', 'picture', 'groupd']:
 	    if request.form[i] != "":
 		s[i] = request.form[i]
 	    else:
@@ -60,15 +60,15 @@ def gensearch():
     # logic for the general search page
     # creates SQL query based on text input and searches all fields in the JSON doc
     # example SQL statement created will look like:
-    #     SELECT doc
-    #     from user_profile
-    #     where json_textcontains(doc, '$', 'jane')
+    #     SELECT p.doc
+    #     from user_profile p
+    #     where json_textcontains(p.doc, '$', :xvar)
     form = genSearchForm()
     if form.validate_on_submit():
-	sql = """SELECT p.doc FROM user_profile p """
 	if request.form['searchInput'] != "":
-	    sql = sql + "WHERE json_textcontains(p.doc, '$', '" + request.form['searchInput'] +  "')"	
-	search_results = db_connection.execute(sql).fetchall()
+	    search_results = db_connection.execute("""SELECT p.doc FROM user_profile p WHERE json_textcontains(p.doc, '$', :xvar)""", xvar = request.form['searchInput']).fetchall()
+	else:
+	    search_results = db_connection.execute("""SELECT p.doc FROM user_profile p""").fetchall()
 	results =[]
 	for i in range(len(search_results)):
             dict_string = json.loads(search_results[i][0])
@@ -84,27 +84,37 @@ def search():
     # example sql statement created will look like this:
     #	SELECT p.doc 
     #	FROM user_profile p 
-    #	WHERE lower(p.doc.Profname) like '%j%'  
-    #	AND lower(p.doc.gradYear) like '%2014%'  
-    #	AND p.doc.inter.outdoors like 1
+    #	WHERE lower(p.doc.empid) like :empid  
+    #	AND lower(p.doc.groupd) like :groupd  
+    #	AND lower(p.doc.school) like :school  
+    #	AND lower(p.doc.phone) like :phone  
+    #	AND lower(p.doc.involv) like :involv  
+    #	AND lower(p.doc.loc) like :loc  
+    #	AND lower(p.doc.about) like :about  
+    #	AND lower(p.doc.age) like :age  
+    #	AND lower(p.doc.gradYear) like :gradYear  
+    #	AND lower(p.doc.Profname) like :Profname  
+    #	AND lower(p.doc.email) like :email 
     form = SearchForm()
     if form.validate_on_submit():
         sql = """SELECT p.doc FROM user_profile p """
 	where_clause = []
         # search through each input field to check if there was inputted text
 	# if yes, create a sql statement to search the JSON field for that text
-	for i in ['Profname','about','age','email','phone','loc','group','empid','school','gradYear','involv']:
+	d = {'Profname':'%','about':'%','age':'%','email':'%','phone':'%','loc':'%','empid':'%','school':'%','gradYear':'%','involv':'%','groupd':'%'}
+	for i in d.keys():
 	    if request.form[i] != "":
-		where_clause.append("lower(p.doc." + i + ") like '%" + request.form[i] +"%' ")	
+		d[i] = '%' + request.form[i].lower() + '%'
+	    where_clause.append("lower(p.doc." + i + ") like :" + i +" ")	
         for i in request.form.getlist('interests'):
 	    where_clause.append("p.doc.inter." + i +" like 1")
-	# append all the AND sequel clauses
-	# add in the WHERE clause followed by all the AND clauses
+	#append all the AND sequel clauses
+	#add in the WHERE clause followed by all the AND clauses
 	if len(where_clause) > 0:
 	    all_wheres = " AND ".join(where_clause)
 	    sql = sql + "WHERE " + all_wheres	
 	# execute the sql statement on the DB and return the results page showing all the matches
-	search_results = db_connection.execute(sql).fetchall()
+	search_results = db_connection.execute(sql, Profname = d['Profname'].lower(), about=d['about'], age=d['age'], email=d['email'], phone=d['phone'],loc=d['loc'],groupd=d['groupd'], empid=d['empid'], school=d['school'], gradYear=d['gradYear'], involv=d['involv']).fetchall()
 	results =[]
 	for i in range(len(search_results)):
             dict_string = json.loads(search_results[i][0])

@@ -28,7 +28,7 @@ class SearchForm(Form):
         widget = widgets.ListWidget(prefix_label=True)
 	)
     loc = TextField("Location")
-    group = TextField("Group")
+    groupd = TextField("Group")
     empid = TextField("Employee ID")
     school = TextField("School")
     gradYear = TextField("Graduation Year")
