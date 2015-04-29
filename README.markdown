@@ -21,7 +21,7 @@ In order to run the app on your machine you’ll need to follow these quick inst
            pip install Flask-WTF
 
  4.	Install bootstrap by following [these](http://getbootstrap.com/getting-started/) instructions.
- 5.	Clone our git repo https://github.com/knordin/JaSON
+ 5.	Clone our git repo
 
 ## Running the DB Setup Script
 
