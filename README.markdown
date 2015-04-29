@@ -5,27 +5,27 @@
 ## An introduction
 
 
-The JaSON application is a template web application that extends Flask, a lightweight microframework for Python. The demo uses Twitter Bootstrap for style, Oracle Database for the database, and SQL Alchemy for easy DB connectivity.
+The JaSON application is a template web application that extends [Flask](http://flask.pocoo.org), a lightweight microframework for Python. The demo uses Twitter Bootstrap for style, Oracle Database for the database, and SQL Alchemy for easy DB connectivity.
  
 JaSON was built to be a simple demo that showcases how using JSON as a document store with Oracle Database 12c provides a flexible and scalable development environment, even for novice web developers. In this document, we’ll walk you through how to install and setup the demo application, the general file structure, some details about the tech stack, and a summary of the JSON functionality it showcases.
 
 ## Installing Dependencies
 
 In order to run the app on your machine you’ll need to follow these quick installation steps:
- 1.	Download and configure an Oracle Database 12c.
- 2.	If you do not already have python on your machine, you will need to download it from here. If you do not already                have pip installed on your machine, you will need to follow these instructions.
+ 1.	Download and configure an [Oracle Database 12c](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html).
+ 2.	If you do not already have python on your machine, you will need to download it from [here](https://www.python.org/downloads/). If you do not already                have pip installed on your machine, you will need to follow [these](https://pip.pypa.io/en/latest/installing.html) instructions.
  3.	In your command window, run;         
  
            pip install Flask
            pip install Flask-SQLAlchemy
            pip install Flask-WTF
 
- 4.	Install bootstrap by following these instructions.
+ 4.	Install bootstrap by following [these](http://getbootstrap.com/getting-started/) instructions.
  5.	Clone our git repo https://github.com/knordin/JaSON
 
 ## Running the DB Setup Script
 
-Once you have successfully installed all the dependencies above, you’ll need to run a SQL setup script. You can run this script however you like, but we recommend installing SQL Developer because it has a GUI interface so you can view the data easily.
+Once you have successfully installed all the dependencies above, you’ll need to run a SQL setup script. You can run this script however you like, but we recommend installing [SQL Developer](http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html) because it has a GUI interface so you can view the data easily.
 
 ## Running the Application
 
