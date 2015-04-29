@@ -1,11 +1,11 @@
 # JaSON
 
-### Getting Started on building a web app using Oracle Database with JSON functionality
+### Getting Started on building a web app using Oracle Database 12c (12.1.0.2 or later) with JSON functionality
 
 ## An introduction
 
 
-The JaSON application is a template web application that extends [Flask](http://flask.pocoo.org), a lightweight microframework for Python. The demo uses Twitter Bootstrap for style, Oracle Database for the database, and SQL Alchemy for easy DB connectivity.
+The JaSON application is a template web application that extends [Flask](http://flask.pocoo.org), a lightweight microframework for Python. The demo uses Twitter Bootstrap for style, Oracle Database 12c for the database, and SQL Alchemy for easy DB connectivity.
  
 JaSON was built to be a simple demo that showcases how using JSON as a document store with Oracle Database 12c provides a flexible and scalable development environment, even for novice web developers. In this document, we’ll walk you through how to install and setup the demo application, the general file structure, some details about the tech stack, and a summary of the JSON functionality it showcases.
 
@@ -59,7 +59,7 @@ SQLAlchemy is a database toolkit for python that uses cx_oracle to connect to Or
 
 ## Scope and Purpose
 
-The purpose of this app is to help you learn Oracle Database, SQL, and web app building skills in Python. It’s meant to be quick and simple, using popular developer tools to showcase powerful Oracle Database & JSON functionality. The app is a basic social directory template, the “Hello, World!” of web applications. It’s flexible and dynamic based on its use of JSON as a document store as opposed to a rigid schema.
+The purpose of this app is to help you learn Oracle Database, SQL, and web app building skills in Python. It’s meant to be quick and simple, using popular developer tools to showcase powerful Oracle Database 12c & JSON functionality. The app is a basic social directory template, the “Hello, World!” of web applications. It’s flexible and dynamic based on its use of JSON as a document store as opposed to a rigid schema.
  
 ##### JSON functionality
 
